@@ -13,6 +13,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.7",
+        "monarobase/country-list": "^3.2",
         "ph7jack/wireui": "^0.14.1",
         "wire-elements/modal": "^1.0"
     },

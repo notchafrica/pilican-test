@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Customer;
 
 use LivewireUI\Modal\ModalComponent;
+use Monarobase\CountryList\CountryListFacade;
 
 class Create extends ModalComponent
 {
@@ -10,6 +11,8 @@ class Create extends ModalComponent
     public $email;
     public $phone;
     public $address;
+    public $country;
+    public $city;
 
     public function save()
     {
@@ -25,7 +28,7 @@ class Create extends ModalComponent
     }
     public function render()
     {
-        return view('livewire.customer.create');
+        return view('livewire.customer.create', ['countries' => []]);
     }
 
     /**
@@ -33,7 +36,7 @@ class Create extends ModalComponent
      */
     public static function modalMaxWidth(): string
     {
-        return 'md';
+        return 'lg';
     }
 
     public static function closeModalOnEscape(): bool
