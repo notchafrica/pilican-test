@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="flex flex-col w-full md:space-y-4">
-            <div class="overflow-auto h-screen pb-24 px-4 md:px-6">
+            <div class="overflow-auto h-screen pb-24">
                 @yield('content')
                 @isset($slot)
                 {{ $slot }}

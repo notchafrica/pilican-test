@@ -45,7 +45,7 @@ return [
 	|
 	| Set the width and height of the image, in pixels.
 	*/
-    'image_size'       => 48,
+    'image_size'       => 98,
 
     /*
 	|--------------------------------------------------------------------------
