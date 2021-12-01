@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Customer;
 
 use LivewireUI\Modal\ModalComponent;
-use Monarobase\CountryList\CountryListFacade;
+use \Countries;
 
 class Create extends ModalComponent
 {
@@ -11,7 +11,7 @@ class Create extends ModalComponent
     public $email;
     public $phone;
     public $address;
-    public $country;
+    public $country = "cm";
     public $city;
 
     public function save()
@@ -22,13 +22,22 @@ class Create extends ModalComponent
             'email' => ["required_without:phone", "email"],
         ]);
 
+        auth()->user()->company->customers()->create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'address' => $this->address,
+            'country' => $this->country,
+            'city' => $this->city,
+        ]);
+
         $this->emit('customerSaved', $this->name);
 
         $this->reset();
     }
     public function render()
     {
-        return view('livewire.customer.create', ['countries' => []]);
+        return view('livewire.customer.create', ['countries' => Countries::getList('en', 'php')]);
     }
 
     /**

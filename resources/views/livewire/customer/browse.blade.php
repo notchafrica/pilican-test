@@ -1,8 +1,8 @@
 <div>
     {{-- Do your work, then step back. --}}
 
-    <div class="space-y-3 mt-5">
-        <div class="border-b w-full flex justify-between items-end">
+    <div class="space-y-5 mt-5">
+        <div class="border-b w-full flex justify-between items-end pb-2">
             <div>
                 <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                     User database
@@ -11,7 +11,7 @@
                     Details and informations about user.
                 </p>
             </div>
-            <div>
+            <div class="pb-1">
                 <x-button label="{{__('Create new customer')}}" wire:click="$emit('openModal', 'customer.create')"
                     primary />
             </div>

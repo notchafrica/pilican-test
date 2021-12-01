@@ -6,9 +6,11 @@ use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
+use App\Http\Livewire\Auth\Profile;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Customer\Browse as CustomerBrowse;
+use App\Http\Middleware\CompanySetupMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
@@ -48,12 +49,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+
+
+
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
         ->middleware('signed')
         ->name('verification.verify');
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+    Route::get("auth/profile", Profile::class)->name("auth.profile");
 
-    Route::get('customers', CustomerBrowse::class)->name("customers.index");
+    Route::middleware([CompanySetupMiddleware::class])->group(function () {
+        Route::view('/', 'welcome')->name('home');
+        Route::get('customers', CustomerBrowse::class)->name("customers.index");
+        Route::get('customers/{customer:code}', CustomerBrowse::class)->name("customers.index");
+    });
 });
