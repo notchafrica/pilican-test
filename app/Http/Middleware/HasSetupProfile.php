@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Company;
 use Closure;
 use Illuminate\Http\Request;
 
-class CompanySetupMiddleware
+class HasSetupProfile
 {
     /**
      * Handle an incoming request.
@@ -18,8 +17,8 @@ class CompanySetupMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = auth()->user();
-        if (!$user->company && !$user->profile) {
-            return redirect()->route("auth.profile");
+        if ($user->company || $user->profile) {
+            return redirect()->route("home");
         }
         return $next($request);
     }

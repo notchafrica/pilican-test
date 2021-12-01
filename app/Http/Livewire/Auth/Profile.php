@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Models\Company;
+use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
 class Profile extends Component
@@ -15,15 +16,15 @@ class Profile extends Component
     public $address;
     public $about;
 
-    public function save()
+    public function complete()
     {
         $this->validate([
             'name' => 'required|min:3',
             'email' => 'nullable|email',
-            'phone' => 'required|phone',
+            'phone' => 'required|phone:CM,AUTO',
         ]);
 
-        $company = Company::create([
+        auth()->user()->profile()->create([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -35,15 +36,13 @@ class Profile extends Component
             "owner" => true
         ]);
 
+        $this->emit('profileCreated');
 
-
-        /* $aut
-
-        auth()->user()->company()->create([]) */
+        return redirect()->route('home');
     }
 
     public function render()
     {
-        return view('livewire.auth.profile')->extends('layouts.setup');
+        return view('livewire.auth.profile', ['countries' => \Countries::getList(App::getLocale(), "php")])->extends('layouts.setup');
     }
 }

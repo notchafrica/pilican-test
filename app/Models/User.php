@@ -61,6 +61,12 @@ class User extends Authenticatable
 
     public function company()
     {
+        if (!$this->profile()->exists())
+            return $this->belongsTo(Company::class);
+        return $this->profile();
+    }
+    public function profile()
+    {
         return $this->hasOne(Company::class);
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Customer;
 
 use LivewireUI\Modal\ModalComponent;
 use \Countries;
+use WireUi\Traits\Actions;
 
 class Create extends ModalComponent
 {
+    use Actions;
     public $name;
     public $email;
     public $phone;
@@ -18,20 +20,24 @@ class Create extends ModalComponent
     {
         $this->validate([
             'name' => 'required',
-            'phone' => ["required_without:email"],
-            'email' => ["required_without:phone", "email"],
+            'phone' => ["nullable:email"],
+            'email' => ["nullable:phone", "email"],
         ]);
 
-        auth()->user()->company->customers()->create([
+        $user = auth()->user();
+
+        $user->company->customers()->create([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
             'country' => $this->country,
             'city' => $this->city,
+            "user_id" => $user->id,
         ]);
 
         $this->emit('customerSaved', $this->name);
+        $this->closeModal();
 
         $this->reset();
     }

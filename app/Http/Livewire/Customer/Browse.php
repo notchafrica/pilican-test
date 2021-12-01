@@ -9,8 +9,11 @@ class Browse extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['customerSaved' => 'render'];
+
     public function render()
     {
-        return view('livewire.customer.browse');
+        $user = auth()->user();
+        return view('livewire.customer.browse', ["customers" => $user->company->customers()->paginate()]);
     }
 }

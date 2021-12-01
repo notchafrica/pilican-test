@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Rackbeat\UIAvatars\HasAvatar;
 
 class Customer extends Model
 {
     use HasFactory;
+    use HasAvatar;
     protected $guarded = ['id'];
 
     protected static function booted()

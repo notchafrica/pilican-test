@@ -10,7 +10,9 @@ use App\Http\Livewire\Auth\Profile;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Customer\Browse as CustomerBrowse;
+use App\Http\Livewire\Customer\Details as CustomerDetails;
 use App\Http\Middleware\CompanySetupMiddleware;
+use App\Http\Middleware\HasSetupProfile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,11 +60,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
-    Route::get("auth/profile", Profile::class)->name("auth.profile");
+
+    Route::middleware([HasSetupProfile::class])->group(function () {
+        Route::get("auth/profile", Profile::class)->name("auth.profile");
+    });
+
 
     Route::middleware([CompanySetupMiddleware::class])->group(function () {
         Route::view('/', 'welcome')->name('home');
         Route::get('customers', CustomerBrowse::class)->name("customers.index");
-        Route::get('customers/{customer:code}', CustomerBrowse::class)->name("customers.index");
+        Route::get('customers/{customer:code}', CustomerDetails::class)->name("customers.show");
     });
 });
