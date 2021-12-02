@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Traits\HasTransactions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Rackbeat\UIAvatars\HasAvatar;
 use Illuminate\Support\Str;
 
-class Company extends Model
+class Provider extends Model
 {
     use HasFactory;
+    use HasAvatar;
     use HasTransactions;
     protected $guarded = ['id'];
 
@@ -27,20 +29,5 @@ class Company extends Model
             return self::code();
         }
         return $i;
-    }
-
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
-
-    public function customers()
-    {
-        return $this->hasMany(Customer::class);
-    }
-
-    public function providers()
-    {
-        return $this->hasMany(Provider::class);
     }
 }

@@ -31,6 +31,15 @@
                                 @lang("Customers")
                             </span>
                         </a>
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'providers.index') bg-green-900 text-white @else @endif"
+                            href="{{route('providers.index')}}">
+                            <span class="text-left">
+                                <x-icon name="office-building" class="h-12"></x-icon>
+                            </span>
+                            <span class="mx-2 text-sm font-normal">
+                                @lang("Providers")
+                            </span>
+                        </a>
                     </div>
                 </nav>
             </div>
