@@ -17,25 +17,24 @@ class Edit extends ModalComponent
     public $customer;
     public function mount($customer)
     {
-        $this->customer = Customer::findOrFail($customer);
-        $this->name = $this->customer->name;
-        $this->email = $this->customer->email;
-        $this->phone = $this->customer->phone;
-        $this->address = $this->customer->address;
-        $this->country = $this->customer->country;
-        $this->city = $this->customer->city;
+        $customer = Customer::findOrFail($customer);
+        $this->name = $customer->name;
+        $this->email = $customer->email;
+        $this->phone = $customer->phone;
+        $this->address = $customer->address;
+        $this->country = $customer->country;
+        $this->city = $customer->city;
+        $this->customer = $customer;
     }
     public function render()
     {
-        return view('livewire.customer.edit', ['countries' => Countries::getList('en', 'php')]);
+        return view('livewire.customer.edit', ['countries' => \Countries::getList('en', 'php')]);
     }
 
     public function save()
     {
         $this->validate([
             'name' => 'required',
-            'phone' => ["required_without:email"],
-            'email' => ["required_without:phone", "email"],
         ]);
 
         $this->customer->update([
@@ -50,6 +49,7 @@ class Edit extends ModalComponent
         $this->emit('customerSaved', $this->name);
 
         $this->reset();
+        $this->closeModal();
     }
 
     /**

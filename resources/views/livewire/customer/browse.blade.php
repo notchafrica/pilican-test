@@ -1,5 +1,4 @@
-<div>
-    {{-- Do your work, then step back. --}}
+<div class="px-4 md:px-6">
 
     <div class="space-y-5 mt-5">
         <div class="border-b w-full flex justify-between items-end pb-2">
