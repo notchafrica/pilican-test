@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->morphs('transactionable');
             $table->double('amount');
             $table->string('currency')->default('XAF');
-            $table->string('method')->default('XAF');
+            $table->string('method')->default('cash');
             $table->string('type');
             $table->text('reason')->nullable();
             $table->string("reference", 100)->nullable();

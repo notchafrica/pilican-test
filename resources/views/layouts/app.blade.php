@@ -23,6 +23,15 @@
                             </span>
                         </a>
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
+                            href="{{route('sales.index')}}">
+                            <span class="text-left">
+                                <x-icon name="currency-bangladeshi" class="h-12"></x-icon>
+                            </span>
+                            <span class="mx-2 text-sm font-normal">
+                                @lang("Sales")
+                            </span>
+                        </a>
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
                             href="{{route('stocks.index')}}">
                             <span class="text-left">
                                 <x-icon name="view-grid" class="h-12"></x-icon>

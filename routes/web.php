@@ -13,6 +13,7 @@ use App\Http\Livewire\Customer\Browse as CustomerBrowse;
 use App\Http\Livewire\Customer\Details as CustomerDetails;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
+use App\Http\Livewire\Sale\Index as SaleIndex;
 use App\Http\Livewire\Stock\Category\Browse as CategoryBrowse;
 use App\Http\Livewire\Stock\Index;
 use App\Http\Livewire\Stock\Product\Browse as ProductBrowse;
@@ -84,5 +85,7 @@ Route::middleware('auth')->group(function () {
         Route::get('stocks/categories', CategoryBrowse::class)->name("stocks.categories");
         Route::get('stocks/products', ProductBrowse::class)->name("stocks.products");
         Route::get('stocks/services', ServiceBrowse::class)->name("stocks.services");
+
+        Route::get('sales', SaleIndex::class)->name("sales.index");
     });
 });
