@@ -6,6 +6,9 @@ module.exports = {
             fontFamily: {
                 sans: ["Inter var", ...defaultTheme.fontFamily.sans],
             },
+            sizing: {
+                "w-70": "17rem",
+            },
         },
     },
     presets: [require("./vendor/ph7jack/wireui/tailwind.config.js")],
@@ -29,6 +32,7 @@ module.exports = {
             "./vendor/ph7jack/wireui/resources/**/*.blade.php",
             "./vendor/ph7jack/wireui/ts/**/*.ts",
             "./vendor/ph7jack/wireui/src/View/**/*.php",
+            "./vendor/rappasoft/laravel-livewire-tables/resources/views/tailwind/**/*.blade.php",
         ],
         options: {
             defaultExtractor: (content) =>

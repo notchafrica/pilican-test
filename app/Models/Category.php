@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\HasTransactions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Company extends Model
+class Category extends Model
 {
     use HasFactory;
-    use HasTransactions;
+
     protected $guarded = ['id'];
 
     protected static function booted()
@@ -27,25 +26,5 @@ class Company extends Model
             return self::code();
         }
         return $i;
-    }
-
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
-
-    public function customers()
-    {
-        return $this->hasMany(Customer::class);
-    }
-
-    public function providers()
-    {
-        return $this->hasMany(Provider::class);
-    }
-
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
     }
 }
