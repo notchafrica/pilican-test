@@ -15,6 +15,7 @@ use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
 use App\Http\Livewire\Stock\Category\Browse as CategoryBrowse;
 use App\Http\Livewire\Stock\Index;
+use App\Http\Livewire\Stock\Product\Browse as ProductBrowse;
 use App\Http\Middleware\CompanySetupMiddleware;
 use App\Http\Middleware\HasSetupProfile;
 use Illuminate\Support\Facades\Route;
@@ -80,5 +81,6 @@ Route::middleware('auth')->group(function () {
 
         Route::get('stocks', Index::class)->name("stocks.index");
         Route::get('stocks/categories', CategoryBrowse::class)->name("stocks.categories");
+        Route::get('stocks/products', ProductBrowse::class)->name("stocks.products");
     });
 });

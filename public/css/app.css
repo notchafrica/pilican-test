@@ -1355,6 +1355,11 @@ input:invalid, textarea:invalid, select:invalid {
 	margin-right: calc(0.25rem * var(--tw-space-x-reverse));
 	margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-y-reverse: 0;
 	border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1675,6 +1680,10 @@ input:invalid, textarea:invalid, select:invalid {
 .bg-red-600 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
+}
+.bg-green-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
 }
 .bg-opacity-60 {
 	--tw-bg-opacity: 0.6;
@@ -3336,6 +3345,9 @@ input:invalid, textarea:invalid, select:invalid {
 	}
 }
 @media (min-width: 768px) {
+	.md\:col-span-2 {
+		grid-column: span 2 / span 2;
+	}
 	.md\:mr-16 {
 		margin-right: 4rem;
 	}

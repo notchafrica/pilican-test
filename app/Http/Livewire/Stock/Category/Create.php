@@ -24,6 +24,7 @@ class Create extends ModalComponent
         $this->company->categories()->create([
             'name' => $this->name,
             'description' => $this->description,
+            "user_id" => auth()->id()
         ]);
 
         $this->emit('stockUpdated');
