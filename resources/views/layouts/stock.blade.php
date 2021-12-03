@@ -19,7 +19,7 @@
                                     w-full text-green-600 rounded-md @if (Route::currentRouteName() == 'stocks.products') bg-green-100 @endif">
                     <x-icon name="color-swatch" class="h-5"></x-icon> <span>@lang("Products")</span>
                 </a></li>
-            <li><a href="{{route('stocks.index')}}"
+            <li><a href="{{route('stocks.services')}}"
                     class="flex px-3 py-2 transition-all delay-100 items-center space-x-2 ease-in-out hover:bg-green-100
                                         w-full text-green-600 rounded-md @if (Route::currentRouteName() == 'stocks.services') bg-green-100 @endif">
                     <x-icon name="briefcase" class="h-5"></x-icon> <span>@lang("Services")</span>

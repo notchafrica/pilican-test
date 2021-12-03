@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Product extends Model
+class Service extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
 
     protected static function booted()
@@ -26,10 +25,5 @@ class Product extends Model
             return self::code();
         }
         return $i;
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
     }
 }
