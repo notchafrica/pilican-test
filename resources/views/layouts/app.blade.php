@@ -4,7 +4,7 @@
 
 <main class="bg-gray-100 h-screen overflow-hidden relative">
     <div class="flex items-start justify-between">
-        <div class="h-screen hidden lg:block shadow-lg relative w-32 bg-green-800">
+        <div class="h-screen hidden lg:flex lg:flex-col shadow-lg relative w-32 bg-green-800">
             <div class="h-full dark:bg-gray-700">
                 <nav>
                     <div class="space-y-0">
@@ -59,6 +59,18 @@
                             </span>
                         </a>
                     </div>
+                </nav>
+            </div>
+            <div class="h-full dark:bg-gray-700">
+                <nav>
+
+                    <form action="{{route('logout')}}" method="POST">
+                        @method("post")
+                        @csrf
+                        <div class="space-y-0 w-full p-2">
+                            <x-button type="submit" icon="logout" negative class="block">@lang("Logout")</x-button>
+                        </div>
+                    </form>
                 </nav>
             </div>
         </div>

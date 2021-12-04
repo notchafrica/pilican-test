@@ -11,6 +11,7 @@ use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Customer\Browse as CustomerBrowse;
 use App\Http\Livewire\Customer\Details as CustomerDetails;
+use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
 use App\Http\Livewire\Sale\Index as SaleIndex;
@@ -74,7 +75,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::middleware([CompanySetupMiddleware::class])->group(function () {
-        Route::view('/', 'welcome')->name('home');
+        Route::get('/', Dashboard::class)->name('home');
         Route::get('customers', CustomerBrowse::class)->name("customers.index");
         Route::get('customers/{customer:code}', CustomerDetails::class)->name("customers.show");
 

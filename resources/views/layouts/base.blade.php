@@ -33,6 +33,7 @@
     @yield('body')
     @wireUiScripts
     @livewireScripts
+    @livewireChartsScripts
 </body>
 
 </html>
