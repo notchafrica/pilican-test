@@ -17,7 +17,7 @@
             </div>
             <div class="flex flex-col justify-start">
                 <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
-                    36K
+                    {{ $company->orders()->whereStatus('complete')->sum('amount')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
                     <div class="absolute top-0 h-2  left-0 rounded bg-green-500 w-2/3">

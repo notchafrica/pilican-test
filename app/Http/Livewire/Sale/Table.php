@@ -18,19 +18,16 @@ class Table extends DataTableComponent
     {
         return [
             Column::make('Reference'),
+            Column::make('Customer', 'price'),
+            Column::make('Method', 'price'),
             Column::make('Total', 'price'),
-            Column::make('SKU', 'sku'),
-            Column::make('Added at', 'created_at'),
+            Column::make('Date', 'created_at'),
         ];
     }
 
     public function query()
     {
-        return $this->company->services()
+        return $this->company->orders()
             ->orderBy('name');
-    }
-    public function render()
-    {
-        return view('livewire.sale.table');
     }
 }
