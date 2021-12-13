@@ -17,4 +17,9 @@ class Purchase extends Model
     {
         return $this->hasMany(PurchaseProduct::class);
     }
+
+    public function stock()
+    {
+        return $this->hasMany(Stock::class);
+    }
 }

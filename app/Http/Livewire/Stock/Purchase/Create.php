@@ -62,6 +62,7 @@ class Create extends ModalComponent
             $purchase->products()->create([
                 'product_id' => $this->product[$key],
                 'quantity' => $this->quantity[$key],
+                "movement" => "input"
             ]);
         }
 
