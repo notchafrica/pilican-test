@@ -11,7 +11,7 @@ module.exports = {
             },
         },
     },
-    presets: [require("./vendor/ph7jack/wireui/tailwind.config.js")],
+    presets: [require("./vendor/chapdel/wireui/tailwind.config.js")],
     variants: {
         extend: {
             backgroundColor: ["active"],
@@ -29,9 +29,9 @@ module.exports = {
             "./resources/**/*.php",
             "./resources/**/*.vue",
             "./resources/**/*.twig",
-            "./vendor/ph7jack/wireui/resources/**/*.blade.php",
-            "./vendor/ph7jack/wireui/ts/**/*.ts",
-            "./vendor/ph7jack/wireui/src/View/**/*.php",
+            "./vendor/chapdel/wireui/resources/**/*.blade.php",
+            "./vendor/chapdel/wireui/ts/**/*.ts",
+            "./vendor/chapdel/wireui/src/View/**/*.php",
             "./vendor/rappasoft/laravel-livewire-tables/resources/views/tailwind/**/*.blade.php",
         ],
         options: {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Models\Company;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -9,7 +10,8 @@ use Livewire\Component;
 class Login extends Component
 {
     /** @var string */
-    public $email = '';
+    public $username = '';
+    public $code = '';
 
     /** @var string */
     public $password = '';
@@ -18,7 +20,8 @@ class Login extends Component
     public $remember = false;
 
     protected $rules = [
-        'email' => ['required', 'email'],
+        'username' => ['required',],
+        'code' => ['required', 'exists:companies,code'],
         'password' => ['required'],
     ];
 
@@ -26,9 +29,10 @@ class Login extends Component
     {
         $this->validate();
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            $this->addError('email', trans('auth.failed'));
+        $company = Company::whereCode($this->code)->first();
 
+        if (!Auth::attempt(['username' => $this->username, 'password' => $this->password, 'company_id' => $company?->id ?: null], $this->remember)) {
+            $this->addError('username', trans('auth.failed'));
             return;
         }
 

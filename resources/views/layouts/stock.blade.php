@@ -24,7 +24,13 @@
                                         w-full text-green-600 rounded-md @if (Route::currentRouteName() == 'stocks.services') bg-green-100 @endif">
                     <x-icon name="briefcase" class="h-5"></x-icon> <span>@lang("Services")</span>
                 </a></li>
+            <li><a href="{{route('stocks.purchases')}}"
+                    class="flex px-3 py-2 transition-all delay-100 items-center space-x-2 ease-in-out hover:bg-green-100
+                                                        w-full text-green-600 rounded-md @if (Route::currentRouteName() == 'stocks.purchases') bg-green-100 @endif">
+                    <x-icon name="inbox-in" class="h-5"></x-icon> <span>@lang("Purchasing")</span>
+                </a></li>
         </ul>
+
     </div>
     <div class="h-screen p-3 flex-grow">
         @isset($slot)

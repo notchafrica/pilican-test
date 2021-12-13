@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->string('barcode')->nullable()->unique();
             $table->longText('description')->nullable();
             $table->integer('security_stock')->default(0);
-            $table->integer('quantity')->default(0);
             $table->boolean('is_visible')->default(false);
             $table->integer('price')->nullable();
             $table->integer('purchase_price')->nullable();

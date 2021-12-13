@@ -22,6 +22,7 @@
                                 @lang("Dashboard")
                             </span>
                         </a>
+                        @role("admin|sale|super-admin")
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
                             href="{{route('sales.index')}}">
                             <span class="text-left">
@@ -31,6 +32,8 @@
                                 @lang("Sales")
                             </span>
                         </a>
+                        @endrole
+                        @role("warehouse|admin|super-admin")
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
                             href="{{route('stocks.index')}}">
                             <span class="text-left">
@@ -40,6 +43,8 @@
                                 @lang("Stock")
                             </span>
                         </a>
+                        @endrole
+                        @role("admin|super-admin")
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
                             href="{{route('customers.index')}}">
                             <span class="text-left">
@@ -49,6 +54,8 @@
                                 @lang("Customers")
                             </span>
                         </a>
+                        @endrole
+                        @role("admin|super-admin")
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'providers.index') bg-green-900 text-white @else @endif"
                             href="{{route('providers.index')}}">
                             <span class="text-left">
@@ -58,6 +65,19 @@
                                 @lang("Providers")
                             </span>
                         </a>
+                        @endrole
+                        @role('admin|super-admin')
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'team.index') bg-green-900 text-white @else @endif"
+                            href="{{route('team.index')}}">
+                            <span class="text-left">
+                                <x-icon name="users" class="h-12"></x-icon>
+                            </span>
+                            <span class="mx-2 text-sm font-normal">
+                                @lang("Team")
+                            </span>
+                        </a>
+                        @endrole
+
                     </div>
                 </nav>
             </div>

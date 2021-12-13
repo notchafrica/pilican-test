@@ -10,11 +10,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Fluent\Concerns\Has;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasTransactions;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

@@ -24,7 +24,9 @@ class Profile extends Component
             'phone' => 'required|phone:CM,AUTO',
         ]);
 
-        auth()->user()->profile()->create([
+        $user = auth()->user();
+
+        $profile = $user->profile()->create([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -35,6 +37,9 @@ class Profile extends Component
             "user_id" => auth()->id(),
             "owner" => true
         ]);
+
+        $user->company_id = $profile->id;
+        $user->save();
 
         $this->emit('profileCreated');
 

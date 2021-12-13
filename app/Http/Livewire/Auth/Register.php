@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class Register extends Component
 {
@@ -40,6 +41,7 @@ class Register extends Component
         event(new Registered($user));
 
         Auth::login($user, true);
+        $user->assignRole(Role::findByName('super-admin'));
 
         return redirect()->intended(route('home'));
     }

@@ -15,9 +15,12 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
 use App\Http\Livewire\Sale\Index as SaleIndex;
+use App\Http\Livewire\Staff\Role\Browse as RoleBrowse;
+use App\Http\Livewire\Staff\User\Browse as UserBrowse;
 use App\Http\Livewire\Stock\Category\Browse as CategoryBrowse;
 use App\Http\Livewire\Stock\Index;
 use App\Http\Livewire\Stock\Product\Browse as ProductBrowse;
+use App\Http\Livewire\Stock\Purchase\Purchase;
 use App\Http\Livewire\Stock\Service\Browse as ServiceBrowse;
 use App\Http\Middleware\CompanySetupMiddleware;
 use App\Http\Middleware\HasSetupProfile;
@@ -76,17 +79,36 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware([CompanySetupMiddleware::class])->group(function () {
         Route::get('/', Dashboard::class)->name('home');
-        Route::get('customers', CustomerBrowse::class)->name("customers.index");
-        Route::get('customers/{customer:code}', CustomerDetails::class)->name("customers.show");
 
-        Route::get('providers', Browse::class)->name("providers.index");
-        Route::get('providers/{provider:code}', Details::class)->name("providers.show");
 
-        Route::get('stocks', Index::class)->name("stocks.index");
-        Route::get('stocks/categories', CategoryBrowse::class)->name("stocks.categories");
-        Route::get('stocks/products', ProductBrowse::class)->name("stocks.products");
-        Route::get('stocks/services', ServiceBrowse::class)->name("stocks.services");
 
-        Route::get('sales', SaleIndex::class)->name("sales.index");
+
+
+        Route::group(['middleware' => ['role:super-admin|admin|warehouse']], function () {
+            Route::get('stocks', Index::class)->name("stocks.index");
+            Route::get('stocks/purchases', Purchase::class)->name("stocks.purchases");
+        });
+
+        Route::group(['middleware' => ['role:super-admin|admin']], function () {
+            Route::get('stocks/categories', CategoryBrowse::class)->name("stocks.categories");
+            Route::get('stocks/products', ProductBrowse::class)->name("stocks.products");
+            Route::get('stocks/services', ServiceBrowse::class)->name("stocks.services");
+        });
+
+        Route::group(['middleware' => ['role:super-admin|admin|sale']], function () {
+            Route::get('sales', SaleIndex::class)->name("sales.index");
+        });
+
+        Route::group(['middleware' => ['role:super-admin|admin']], function () {
+            Route::get('providers', Browse::class)->name("providers.index");
+            Route::get('providers/{provider:code}', Details::class)->name("providers.show");
+            Route::get('customers', CustomerBrowse::class)->name("customers.index");
+            Route::get('customers/{customer:code}', CustomerDetails::class)->name("customers.show");
+        });
+
+        Route::group(['middleware' => ['role:super-admin|admin']], function () {
+            Route::get("team", UserBrowse::class)->name('team.index');
+            Route::get("roles", RoleBrowse::class)->name('team.roles');
+        });
     });
 });
