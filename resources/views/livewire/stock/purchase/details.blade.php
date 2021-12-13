@@ -1,4 +1,4 @@
-<x-card litle="Details">
+<x-card title="Purchase details">
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -22,29 +22,22 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-
-                            @foreach ($products as $product)
+                            @foreach ($products['products'] as $product)
+                            @php
+                            $item = \App\Models\Product::find($product['product_id']);
+                            {{json_encode($item);}}
+                            @endphp
                             <tr>
-
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{json_encode($product)}}</div>
-                                    <div class="text-sm text-gray-500">Optimization</div>
+                                    <div class="text-sm text-gray-900">{{$item?->name}}</div>
+                                    {{-- <div class="text-sm text-gray-500">Optimization</div> --}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                    <div class="text-sm text-gray-500">Optimization</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </span>
+                                    <div class="text-sm text-gray-900">{{$product['quantity']}}</div>
+                                    {{-- <div class="text-sm text-gray-500">Optimization</div> --}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    Admin
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    {{$item?->price}}
                                 </td>
                             </tr>
                             @endforeach

@@ -18,6 +18,7 @@ class CreatePurcharseProductsTable extends Migration
             $table->foreignId('purchase_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->double('quantity')->default(1);
+            $table->double('price')->default(0);
             $table->timestamps();
         });
     }

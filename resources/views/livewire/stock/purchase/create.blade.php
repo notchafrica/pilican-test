@@ -9,6 +9,7 @@
     <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
         <x-native-select :label="__('Select product')" :placeholder="__('Select product')" name="product.{{ $value }}"
             wire:model.defer="product.{{ $value }}">
+            <option>@lang("Select product")</option>
             @foreach ($company->products as $product)
             <option value="{{$product->id}}">{{$product->name}}</option>
             @endforeach

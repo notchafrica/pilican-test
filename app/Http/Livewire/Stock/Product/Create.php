@@ -17,6 +17,7 @@ class Create extends ModalComponent
     public $type;
     public $security_stock;
     public $purchase_price;
+    public $purchase = false;
     public function mount()
     {
         $this->company = auth()->user()->company;
@@ -27,25 +28,35 @@ class Create extends ModalComponent
         $this->validate([
             "name" => ['required'],
             "price" => ['required', 'numeric'],
-            "purchase_price" => ['required', 'numeric'],
+            "purchase_price" => ['nullable', 'numeric'],
             "category" => ["nullable", Rule::exists('categories', 'id')->where(function ($query) {
                 $query->where('company_id', $this->company->id);
             })],
             "type" => ['nullable', "in:no_div,div_part,div_kilo,div_liter,composed"]
         ]);
 
-        $this->company->products()->create([
+        $product = $this->company->products()->create([
             "name" => $this->name,
             "price" => $this->price,
-            "purchase_price" => $this->purchase_price,
-            "sell_price" => $this->purchase_price,
+            "sell_price" => $this->price,
             "description" => $this->description,
             "category_id" => $this->category,
             "type" => $this->type ?? 'no_div',
             "security_stock" => $this->security_stock,
-            "quantity" => $this->quantity,
             "user_id" => auth()->id()
         ]);
+
+        if ($this->purchase) {
+            $purchase =  $this->company->purchases()->create([
+                'user_id' => auth()->id()
+            ]);
+
+            $purchase->products()->create([
+                'product_id' => $product->id,
+                'quantity' => $this->quantity,
+                "movement" => "input"
+            ]);
+        }
 
         $this->emit('productUpdated');
         $this->closeModal();
