@@ -12,6 +12,7 @@ use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Customer\Browse as CustomerBrowse;
 use App\Http\Livewire\Customer\Details as CustomerDetails;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Profile as LivewireProfile;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
 use App\Http\Livewire\Sale\Index as SaleIndex;
@@ -79,10 +80,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware([CompanySetupMiddleware::class])->group(function () {
         Route::get('/', Dashboard::class)->name('home');
-
-
-
-
+        Route::get('/profile', LivewireProfile::class)->name('profile');
 
         Route::group(['middleware' => ['role:super-admin|admin|warehouse']], function () {
             Route::get('stocks', Index::class)->name("stocks.index");

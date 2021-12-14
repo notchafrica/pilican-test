@@ -25,7 +25,6 @@
                             @foreach ($products['products'] as $product)
                             @php
                             $item = \App\Models\Product::find($product['product_id']);
-                            {{json_encode($item);}}
                             @endphp
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">

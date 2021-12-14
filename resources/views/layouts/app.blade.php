@@ -107,10 +107,11 @@
                                 </div>
                             </x-slot>
 
-
+                            <x-dropdown.item icon="user" :label="__('Profile')" :href="route('profile')" />
                             <form action="{{route('logout')}}" method="POST">
                                 @method("post")
                                 @csrf
+
                                 <x-dropdown.item separator icon="logout" type="submit" label="Logout" />
                             </form>
                         </x-dropdown>
