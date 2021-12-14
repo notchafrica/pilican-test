@@ -9,4 +9,9 @@ class OrderService extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function service()
+    {
+        return $this->belongsTo('App\Models\Service');
+    }
 }

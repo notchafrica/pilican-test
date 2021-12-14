@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="flex flex-col w-full md:space-y-4">
-            <header class="w-full shadow bg-white items-center h-16 rounded-b-2xl z-40">
+            <header class="w-full shadow bg-white items-center h-16 rounded-b-2xl">
                 <div class="relative z-20 flex justify-center h-full px-3 mx-auto flex-center">
                     <div class="relative p-1 flex items-center justify-end w-full sm:right-auto">
                         <x-dropdown>
