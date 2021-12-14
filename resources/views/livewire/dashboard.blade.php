@@ -16,7 +16,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     {{ $company->orders()->whereStatus('complete')->sum('amount')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
@@ -41,7 +41,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     0 FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
@@ -66,7 +66,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     {{$company->customers()->sum('balance')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
@@ -91,7 +91,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     {{$company->providers()->sum('balance')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
@@ -116,7 +116,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     {{$company->products()->count()}}
                 </p>
                 {{-- <div class="relative w-28 h-2 bg-gray-200 rounded">
@@ -142,7 +142,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     {{$company->services()->count()}}
                 </p>
                 {{-- <div class="relative w-28 h-2 bg-gray-200 rounded">
@@ -168,7 +168,7 @@
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
+                <p class="text-gray-800 text-md text-left dark:text-white font-bold my-4">
                     {{$company->categories()->count()}}
                 </p>
                 {{-- <div class="relative w-28 h-2 bg-gray-200 rounded">

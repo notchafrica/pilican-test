@@ -33,6 +33,17 @@
                             </span>
                         </a>
                         @endrole
+                        @role("admin|invoice|super-admin")
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
+                            href="{{route('sales.index')}}">
+                            <span class="text-left">
+                                <x-icon name="cash" class="h-12"></x-icon>
+                            </span>
+                            <span class="mx-2 text-sm font-normal">
+                                @lang("Invoices")
+                            </span>
+                        </a>
+                        @endrole
                         @role("warehouse|admin|super-admin")
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
                             href="{{route('stocks.index')}}">
@@ -81,20 +92,31 @@
                     </div>
                 </nav>
             </div>
-            <div class="h-full dark:bg-gray-700">
-                <nav>
-
-                    <form action="{{route('logout')}}" method="POST">
-                        @method("post")
-                        @csrf
-                        <div class="space-y-0 w-full p-2">
-                            <x-button type="submit" icon="logout" negative class="block">@lang("Logout")</x-button>
-                        </div>
-                    </form>
-                </nav>
-            </div>
         </div>
         <div class="flex flex-col w-full md:space-y-4">
+            <header class="w-full shadow bg-white items-center h-16 rounded-b-2xl z-40">
+                <div class="relative z-20 flex justify-center h-full px-3 mx-auto flex-center">
+                    <div class="relative p-1 flex items-center justify-end w-full sm:right-auto">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <div class="flex space-y-2  flex-col">
+                                    <div class="flex items-center space-x-2">
+                                        <x-icon name="user" class="h-8 w-8" src="{{Auth::user()->avatar}}"></x-icon>
+                                        <span class="text-sm font-medium">{{Auth::user()->name}}</span>
+                                    </div>
+                                </div>
+                            </x-slot>
+
+
+                            <form action="{{route('logout')}}" method="POST">
+                                @method("post")
+                                @csrf
+                                <x-dropdown.item separator icon="logout" type="submit" label="Logout" />
+                            </form>
+                        </x-dropdown>
+                    </div>
+                </div>
+            </header>
             <div class="overflow-auto h-screen pb-24">
                 @yield('content')
                 @isset($slot)

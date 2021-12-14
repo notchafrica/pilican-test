@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
     @livewireStyles
+    @wireUiScripts
 
     <!-- Scripts -->
     <script src="{{ url(mix('js/app.js')) }}" defer></script>
@@ -31,7 +32,7 @@
 <body>
     @livewire('livewire-ui-modal')
     @yield('body')
-    @wireUiScripts
+
     @livewireScripts
     @livewireChartsScripts
 </body>

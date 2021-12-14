@@ -72,6 +72,7 @@ class Create extends ModalComponent
             'customer_id' => $customer?->id,
             'currency' => 'xaf',
             'method' => $this->method,
+            'status' => 'pending',
         ]);
 
         if ($this->product) {
