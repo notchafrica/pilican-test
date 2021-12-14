@@ -6,7 +6,7 @@
         </div>
     </div>
     @foreach($inputs as $key => $value)
-    <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-3">
         <x-native-select :label="__('Select product')" :placeholder="__('Select product')" name="product.{{ $value }}"
             wire:model.defer="product.{{ $value }}">
             <option>@lang("Select product")</option>
@@ -14,6 +14,9 @@
             <option value="{{$product->id}}">{{$product->name}}</option>
             @endforeach
         </x-native-select>
+        <x-input label="{{__('Purchase price')}}" type="number" name="price.{{ $value }}"
+            wire:model.defer="price.{{ $value }}">
+        </x-input>
         <div class="flex items-end space-x-2">
             <x-input label="{{__('Quantity')}}" type="number" name="quantity.{{ $value }}"
                 wire:model.defer="quantity.{{ $value }}"></x-input>

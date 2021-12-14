@@ -9,10 +9,11 @@ use LivewireUI\Modal\ModalComponent;
 class Create extends ModalComponent
 {
     public $inputs = [];
+    public $i = 1;
     public $product;
     public $quantity;
+    public $price;
     public $note;
-    public $i = 1;
     public $company;
 
     public function mount()
@@ -48,8 +49,9 @@ class Create extends ModalComponent
                 'required', Rule::exists('products', 'id')->where(function ($query) {
                     $query->whereCompanyId($this->company->id);
                 }),
-                'quantity.*' => ['required', 'numeric']
-            ]
+            ],
+            'quantity.*' => ['required', 'numeric'],
+            'price.*' => ['required', 'numeric'],
         ]);
 
 
@@ -62,6 +64,7 @@ class Create extends ModalComponent
             $purchase->products()->create([
                 'product_id' => $this->product[$key],
                 'quantity' => $this->quantity[$key],
+                "price" => $this->price[$key],
                 "movement" => "input"
             ]);
         }

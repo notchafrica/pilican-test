@@ -15,8 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->morphs('orderable');
-            $table->double('amount');
+            $table->double('amount')->nullable();
             $table->string('currency')->default('XAF');
             $table->string('method')->default('cash');
             $table->string("reference", 100)->nullable();

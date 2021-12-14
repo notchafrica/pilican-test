@@ -18,16 +18,15 @@ class Table extends DataTableComponent
     {
         return [
             Column::make('Reference'),
-            Column::make('Customer', 'price'),
-            Column::make('Method', 'price'),
-            Column::make('Total', 'price'),
+            Column::make('Customer', 'customer.name'),
+            Column::make('Method', 'method'),
+            Column::make('Total', 'amount'),
             Column::make('Date', 'created_at'),
         ];
     }
 
     public function query()
     {
-        return $this->company->orders()
-            ->orderBy('name');
+        return $this->company->orders();
     }
 }
