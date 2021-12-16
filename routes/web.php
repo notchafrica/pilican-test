@@ -12,6 +12,7 @@ use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Customer\Browse as CustomerBrowse;
 use App\Http\Livewire\Customer\Details as CustomerDetails;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Invoice\Index as InvoiceIndex;
 use App\Http\Livewire\Profile as LivewireProfile;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
@@ -95,6 +96,9 @@ Route::middleware('auth')->group(function () {
 
         Route::group(['middleware' => ['role:super-admin|admin|sale']], function () {
             Route::get('sales', SaleIndex::class)->name("sales.index");
+        });
+        Route::group(['middleware' => ['role:super-admin|admin|invoice']], function () {
+            Route::get('invoices', InvoiceIndex::class)->name("invoices.index");
         });
 
         Route::group(['middleware' => ['role:super-admin|admin']], function () {

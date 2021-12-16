@@ -32,6 +32,7 @@
 <body>
     @livewire('livewire-ui-modal')
     @yield('body')
+    <x-dialog z-index="z-50" blur="md" align="center" />
 
     @livewireScripts
     @livewireChartsScripts

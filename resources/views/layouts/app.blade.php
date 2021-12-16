@@ -23,7 +23,7 @@
                             </span>
                         </a>
                         @role("admin|sale|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'sales.index') bg-green-900 text-white @else @endif"
                             href="{{route('sales.index')}}">
                             <span class="text-left">
                                 <x-icon name="currency-bangladeshi" class="h-12"></x-icon>
@@ -34,8 +34,8 @@
                         </a>
                         @endrole
                         @role("admin|invoice|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
-                            href="{{route('sales.index')}}">
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'invoices.index') bg-green-900 text-white @else @endif"
+                            href="{{route('invoices.index')}}">
                             <span class="text-left">
                                 <x-icon name="cash" class="h-12"></x-icon>
                             </span>
@@ -45,7 +45,7 @@
                         </a>
                         @endrole
                         @role("warehouse|admin|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-green-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-green-900 p-2 @if(Route::currentRouteName() == 'stocks.index') bg-green-900 text-white @else @endif"
                             href="{{route('stocks.index')}}">
                             <span class="text-left">
                                 <x-icon name="view-grid" class="h-12"></x-icon>
