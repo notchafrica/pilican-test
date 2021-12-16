@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Invoice;
 
 use App\Models\Order;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 use WireUi\Traits\Actions;
 
@@ -13,6 +12,14 @@ class Details extends ModalComponent
     public $order;
     public $tax = false;
     public $amount;
+    public $fees_amount;
+    public $trade_amount;
+    public $quantity_amount;
+    public $shipping_amount;
+    public $reason;
+    public $method = "cash";
+    public $existing = 'inconito';
+    public $name, $phone, $email, $customer_id;
     public $trade = [
         "show" => false,
         "amount" => 0,
@@ -29,10 +36,15 @@ class Details extends ModalComponent
         "show" => false,
         "amount" => 0,
     ];
+
+    public $country = "cm";
+
+
     public function mount(Order $order)
     {
         $this->order = $order;
         $this->amount = $order->amount;
+        $this->company = auth()->user()->company;
     }
 
     public function addFees()
@@ -108,5 +120,44 @@ class Details extends ModalComponent
     public function render()
     {
         return view('livewire.invoice.details');
+    }
+
+    public function customerTotal()
+    {
+        $amount = $this->amount - (int) $this->quantity_amount ?? 0 - (int) $this->trade_amount ?? 0 + (int) $this->shipping_amount ?? 0;
+
+        if ($this->tax) {
+            return $amount + (($amount / 100) * 19.5);
+        }
+
+        return $amount;
+    }
+
+    public function totals()
+    {
+        $amount = $this->amount - (int) $this->quantity_amount ?? 0 - (int) $this->trade_amount ?? 0 - (int) $this->fees_amount ?? 0 + (int) $this->shipping_amount ?? 0;
+
+        if ($this->tax) {
+            return $amount + (($amount / 100) * 19.5);
+        }
+
+        return $amount;
+    }
+
+    public function bill()
+    {
+        //get customer
+        if ($customer = $this->company->customers()->whereId($this->customer_id)->first()) {
+        } elseif ($this->existing == 'new') {
+            $this->company->customers()->create([
+                'name' => $this->name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'country' => $this->country,
+                "user_id" => auth()->id(),
+            ]);
+        } else {
+            $customer = $this->customer_id;
+        }
     }
 }

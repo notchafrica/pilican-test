@@ -16,13 +16,10 @@ class Create extends ModalComponent
     public $inputs_s = [];
     public $i = 1;
     public $j = 1;
-    public $product, $quantity, $squantity, $service, $price, $sprice, $name, $phone, $email, $customer_id;
+    public $product, $quantity, $squantity, $service, $price, $sprice;
     public $company;
-    public $country;
     public $amount;
-    public $reason;
-    public $method = "cash";
-    public $existing = 'inconito';
+    public $country;
 
     public function mount()
     {
@@ -49,19 +46,7 @@ class Create extends ModalComponent
             'sprice.*' => ['required', 'numeric'],
         ]);
 
-        //get customer
-        if ($customer = $this->company->customers()->whereId($this->customer_id)->first()) {
-        } elseif ($this->existing == 'new') {
-            $this->company->customers()->create([
-                'name' => $this->name,
-                'email' => $this->email,
-                'phone' => $this->phone,
-                'country' => $this->country,
-                "user_id" => auth()->id(),
-            ]);
-        } else {
-            $customer = $this->customer_id;
-        }
+
 
         //get amount
         $amount = 0;
@@ -69,9 +54,7 @@ class Create extends ModalComponent
         //create order
         $order = $this->company->orders()->create([
             'user_id' => auth()->id(),
-            'customer_id' => $customer?->id,
             'currency' => 'xaf',
-            'method' => $this->method,
             'status' => 'pending',
         ]);
 

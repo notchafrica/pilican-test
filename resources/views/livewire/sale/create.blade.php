@@ -47,51 +47,6 @@
     </div>
     @endforeach
 
-    <div class="my-2 space-y-2">
-        <div>
-            <label>@lang("Payment method")</label>
-            <div class="flex space-x-2 mt-2">
-                <x-radio id="cash" value="cash" label="{{__('Cash')}}" wire:model="method" />
-                <x-radio id="digital" value="digital" label="{{__('Digital payment')}}" wire:model="method" />
-                <x-radio id="account" value="account" label="{{__('Account credit')}}" wire:model="method" />
-            </div>
-        </div>
-        <div>
-            <label>@lang("Customer")</label>
-            <div class="grid grid-cols-3 gap-6">
-                <x-radio :label="__('Inconito')" value='inconito' wire:model='existing' id="inconito"></x-radio>
-                <x-radio :label="__('New')" value='new' wire:model='existing' id="new"></x-radio>
-                <x-radio :label="__('Existing')" value='existing' wire:model='existing' id="existing"></x-radio>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        @if ($existing == 'new')
-        <x-input label="{{__('Name')}}" wire:model="name" name="name"></x-input>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-            <x-input label="{{__('Phone')}}" type="phone" wire:model="phone" name="phone"></x-input>
-            <x-input label="{{__('Email')}}" type="email" wire:model="email" name="email"></x-input>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
-            <x-native-select label="{{__('Country')}}" placeholder="{{__('Country')}}" wire:model="country"
-                name="country">
-                @foreach (\Countries::getList(app()->getLocale(), 'php') as $key=> $jcountry)
-                <option value="{{$key}}">{{$jcountry}}</option>
-                @endforeach
-            </x-native-select>
-            <x-input label="{{__('City')}}" wire:model="city" name="city"></x-input>
-        </div>
-        @endif
-        @if ($existing == 'existing')
-        <x-native-select label="{{__('Select customer')}}" placeholder="{{__('Customer')}}" wire:model="customer_id"
-            name="customer_id">
-            @foreach ($company->customers as $key=> $cus)
-            <option value="{{$cus}}">{{$cus->name. '('.$cus->phone.'/'.$cus->email.')'}}</option>
-            @endforeach
-        </x-native-select>
-        @endif
-    </div>
     <div class="flex justify-end space-x-4 mt-2 border-top">
         <x-button label="{{__('Cancel')}}" wire:click="closeModal"></x-button>
         <x-button type="submit" primary label="{{__('Save')}}" wire:click.prevent="save()">@lang("Save")</x-button>
