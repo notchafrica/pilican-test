@@ -17,16 +17,19 @@ class Dashboard extends Component
     {
         $movement =
             LivewireCharts::lineChartModel();
+        $movement2 = LivewireCharts::lineChartModel();
 
+        $movement2->setTitle("Stock output");
         $movement->setTitle("Stock Entry");
 
-        for ($i = 30; $i > 0; $i--) {
-            $date = now()->subDays($i)->format('Y-m-d');
-            $movement->addPoint($date, random_int(1, 999));
+        for ($i = 29; $i >= 0; $i--) {
+            $date = now()->subDays($i);
+            $movement->addPoint($date->format('d M'), $this->company->purchases()->whereDate('created_at', $date)->count());
+            $movement2->addPoint($date->format('d M'), $this->company->orders()->whereDate('created_at', $date)->whereStatus('completed')->count());
         }
 
-        $movement2 = $movement;
-        $movement2->setTitle("Stock output");
+
+
         return view('livewire.dashboard', [
             "entryChart" => $movement,
             "outChart" => $movement2,

@@ -1191,9 +1191,6 @@ input:invalid, textarea:invalid, select:invalid {
 .w-3\.5 {
 	width: 0.875rem;
 }
-.w-24 {
-	width: 6rem;
-}
 .min-w-0 {
 	min-width: 0px;
 }
@@ -1960,9 +1957,6 @@ input:invalid, textarea:invalid, select:invalid {
 }
 .pr-10 {
 	padding-right: 2.5rem;
-}
-.pt-3 {
-	padding-top: 0.75rem;
 }
 .text-left {
 	text-align: left;

@@ -180,9 +180,10 @@
         </div>
     </div>
     <div class="h-72 mt-5 shadow bg-white pt-5">
-        <livewire:livewire-line-chart :line-chart-model="$entryChart" />
-    </div>
-    <div class="h-72 mt-5 shadow bg-white pt-5">
         <livewire:livewire-line-chart :line-chart-model="$outChart" />
     </div>
+    <div class="h-72 mt-5 shadow bg-white pt-5">
+        <livewire:livewire-line-chart :line-chart-model="$entryChart" />
+    </div>
+
 </div>
