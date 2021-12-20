@@ -7,7 +7,7 @@ use Livewire\Component;
 class Browse extends Component
 {
     public $company;
-    protected $listeners = ['productAdded' => 'render'];
+    protected $listeners = ['productAdded' => 'render', 'productImported' => 'render'];
 
     public function mount()
     {

@@ -5,10 +5,12 @@
                 <h1 class="text-2xl font-semibold">@lang("Products")</h1>
                 <p>@lang("Stock overview")</p>
             </div>
-            <div>
+            <div class="flex space-x-2">
                 <x-button primary icon="plus" wire:click="$emit('openModal', 'stock.product.create')">@lang("Create
                     product")
                 </x-button>
+                <x-button label="{{__('Import products')}}" wire:click="$emit('openModal', 'stock.product.import')"
+                    positive />
             </div>
         </div>
         <div class="w-full">

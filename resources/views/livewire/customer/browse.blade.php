@@ -10,9 +10,11 @@
                     @lang("Get details about customer's")
                 </p>
             </div>
-            <div class="pb-1">
+            <div class="pb-1 flex space-x-2">
                 <x-button label="{{__('Create new customer')}}" wire:click="$emit('openModal', 'customer.create')"
                     primary />
+                <x-button label="{{__('Import customers')}}" wire:click="$emit('openModal', 'customer.actions.import')"
+                    positive />
             </div>
         </div>
         @if ($customers->isNotEmpty())
