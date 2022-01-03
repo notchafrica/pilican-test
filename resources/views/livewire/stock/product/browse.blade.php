@@ -5,12 +5,15 @@
                 <h1 class="text-2xl font-semibold">@lang("Products")</h1>
                 <p>@lang("Stock overview")</p>
             </div>
-            <div class="flex space-x-2">
+            <div class="flex space-x-2 items-center">
                 <x-button primary icon="plus" wire:click="$emit('openModal', 'stock.product.create')">@lang("Create
                     product")
                 </x-button>
-                <x-button label="{{__('Import products')}}" wire:click="$emit('openModal', 'stock.product.import')"
-                    positive />
+                <x-button label="{{__('Import')}}" wire:click="$emit('openModal', 'stock.product.import')" positive />
+                <x-dropdown>
+                    <x-dropdown.item label="Export as EXCEL" wire:click="export" />
+                    <x-dropdown.item label="Export as PDF" wire:click="pdf" />
+                </x-dropdown>
             </div>
         </div>
         <div class="w-full">

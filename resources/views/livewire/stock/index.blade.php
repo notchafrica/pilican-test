@@ -8,15 +8,21 @@
             <div class="bg-white border shadow w-full p-2 rounded justify-center text-center flex flex-col space-y-1">
                 <h1 class="text-2xl">{{$company->categories()->count()}}</h1>
                 <p class="text-gray-500">@lang("Categories")</p>
-                <x-button icon="plus" primary wire:click="$emit('openModal', 'stock.category.create')">@lang("New
-                    Category")
-                </x-button>
+                <div>
+                    <x-button icon="plus" primary wire:click="$emit('openModal', 'stock.category.create')">@lang("New
+                        Category")
+                    </x-button>
+                </div>
             </div>
             <div class="bg-white border shadow w-full p-2 rounded justify-center text-center flex flex-col space-y-1">
                 <h1 class="text-2xl">{{$company->products()->count()}}</h1>
                 <p class="text-gray-500">@lang("Products")</p>
-                <x-button icon="plus" primary wire:click="$emit('openModal', 'stock.product.create')">@lang("New
-                    Product")</x-button>
+                <div class="flex space-x-2 justify-between">
+                    <x-button icon="plus" primary wire:click="$emit('openModal', 'stock.product.create')">@lang("New
+                        Product")</x-button>
+                    <x-button icon="plus" positive wire:click="$emit('openModal', 'stock.product.import')">@lang("Import
+                        products")</x-button>
+                </div>
             </div>
             <div class="bg-white border shadow w-full p-2 rounded justify-center text-center flex flex-col space-y-1">
                 <h1 class="text-2xl">{{$company->services()->count()}}</h1>
