@@ -16,7 +16,7 @@
                 </x-dropdown>
             </div>
         </div>
-        <div class="w-full">
+        <div class="w-full" wire:pool.100ms>
             <livewire:stock.product.table :company="$company"></livewire:stock.product.table>
         </div>
     </div>

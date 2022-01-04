@@ -11,7 +11,7 @@
                 </x-button>
             </div>
         </div>
-        <div class="w-full">
+        <div class="w-full" wire:pool.100ms>
             <livewire:stock.category.category-table :company="$company"></livewire:stock.category.category-table>
         </div>
     </div>

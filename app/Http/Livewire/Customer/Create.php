@@ -13,7 +13,7 @@ class Create extends ModalComponent
     public $email;
     public $phone;
     public $address;
-    public $country = "cm";
+    public $country;
     public $city;
 
     public function save()

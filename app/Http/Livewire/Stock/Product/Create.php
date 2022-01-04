@@ -14,10 +14,12 @@ class Create extends ModalComponent
     public $quantity;
     public $description;
     public $category;
+    public $expired_at;
     public $type;
     public $security_stock;
     public $purchase_price;
     public $purchase = false;
+    public $expirable = false;
     public function mount()
     {
         $this->company = auth()->user()->company;
@@ -28,6 +30,7 @@ class Create extends ModalComponent
         $this->validate([
             "name" => ['required'],
             "price" => ['required', 'numeric'],
+            "expired_at" => ['nullable', 'date:future'],
             "purchase_price" => ['nullable', 'numeric'],
             "category" => ["nullable", Rule::exists('categories', 'id')->where(function ($query) {
                 $query->where('company_id', $this->company->id);

@@ -33,6 +33,13 @@
         </x-input>
     </div>
     @endif
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <x-toggle :label="__('Expirable')" wire:model='expirable'></x-toggle>
+        @if ($expirable)
+        <x-datetime-picker without-timezone without-time without-tips label="{{__('Expiration date')}}"
+            placeholder="{{__('Expiration date')}}" wire:model="expired_at" />
+        @endif
+    </div>
 
     <x-textarea wire:model="description" name="description" label="{{__('Description')}}"></x-textarea>
     <div class="flex justify-end space-x-4 mt-2 border-top">

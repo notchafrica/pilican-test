@@ -36,6 +36,7 @@ class CreateProductsTable extends Migration
                 "div_liter",
                 "composed"
             ])->default("no_div");
+            $table->date('expired_at')->nullable();
             $table->timestamps();
         });
     }

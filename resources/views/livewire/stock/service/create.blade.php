@@ -1,6 +1,6 @@
 <form wire:submit.prevent="save" class="bg-white px-4 py-2 space-y-3">
     <div class="border-b mb-2 pb-2">
-        <h1 class="text-lg font-semibold">@lang("New product")</h1>
+        <h1 class="text-lg font-semibold">@lang("New service")</h1>
     </div>
     <div class="grid grid-cols-1 gap-4">
         <x-input label="{{__('Name')}}" wire:model="name" name="name"></x-input>
