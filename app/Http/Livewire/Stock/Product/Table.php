@@ -19,9 +19,18 @@ class Table extends DataTableComponent
             Column::make('Name')
                 ->sortable()
                 ->searchable(),
-            Column::make('Price', 'price'),
-            Column::make('SKU', 'sku'),
-            Column::make('Stock', 'quantity'),
+            Column::make('Price', 'price')->format(function ($products, $key, $product) {
+
+                /* return ($product->purchases()->count() > 0 ? $product->purchases()->avg('price') :
+                    $product->price)
+                    . ' FCFA'; */
+
+                return $product->price . ' FCFA';
+            }),
+            Column::make('Reference', 'code'),
+            Column::make('Stock', 'quantity')->format(function ($products, $key, $product) {
+                return $product->purchases()->sum('quantity') - $product->sales()->whereStatus('complete')->sum('quantity');
+            }),
             Column::make('Category', 'category.name'),
             Column::make('Added at', 'created_at'),
         ];

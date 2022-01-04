@@ -12,7 +12,8 @@
                 <x-button label="{{__('Import')}}" wire:click="$emit('openModal', 'stock.product.import')" positive />
                 <x-dropdown>
                     <x-dropdown.item label="Export as EXCEL" wire:click="export" />
-                    <x-dropdown.item label="Export as PDF" wire:click="pdf" />
+                    {{--
+                    <x-dropdown.item label="Export as PDF" wire:click="pdf" /> --}}
                 </x-dropdown>
             </div>
         </div>

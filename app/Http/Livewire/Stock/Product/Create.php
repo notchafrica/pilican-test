@@ -44,6 +44,7 @@ class Create extends ModalComponent
             "sell_price" => $this->price,
             "description" => $this->description,
             "category_id" => $this->category,
+            'expired_at' => $this->expired_at,
             "type" => $this->type ?? 'no_div',
             "security_stock" => $this->security_stock,
             "user_id" => auth()->id()

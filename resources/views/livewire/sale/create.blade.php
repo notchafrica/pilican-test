@@ -18,7 +18,8 @@
             @endforeach
         </x-native-select>
         <x-input label="{{__('Sell price')}}" type="number" name="price.{{ $value }}"
-            wire:model.defer="price.{{ $value }}">
+            value="{{App\Models\Product::find($value)->price}}"
+            :readonly="!auth()->user()->hasAnyRole('super-admin|admin')" wire:model.defer="price.{{ $value }}">
         </x-input>
         <div class="flex items-end space-x-2">
             <x-input label="{{__('Quantity')}}" type="number" name="quantity.{{ $value }}"
@@ -37,7 +38,8 @@
             @endforeach
         </x-native-select>
         <x-input label="{{__('Sell price')}}" type="number" name="sprice.{{ $value }}"
-            wire:model.defer="sprice.{{ $value }}">
+            value="{{App\Models\Service::find($value)->price}}"
+            :readonly="!auth()->user()->hasAnyRole('super-admin|admin')" wire:model.defer="sprice.{{ $value }}">
         </x-input>
         <div class="flex items-end space-x-2">
             <x-input label="{{__('Quantity')}}" type="number" name="squantity.{{ $value }}"
