@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Staff\User;
 
+use App\Notifications\UserNotification;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 use Spatie\Permission\Models\Role;
@@ -42,6 +43,8 @@ class Create extends ModalComponent
         }
 
         $this->emit('userCreated');
+
+        $user->notify(new UserNotification($this->password));
 
         $this->closeModal();
     }

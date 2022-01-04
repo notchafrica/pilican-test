@@ -79,7 +79,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::middleware([CompanySetupMiddleware::class, 'verified'])->group(function () {
+    Route::middleware([CompanySetupMiddleware::class, 'verified', 'checksinglesession'])->group(function () {
         Route::get('/', Dashboard::class)->name('home');
         Route::get('/profile', LivewireProfile::class)->name('profile');
 

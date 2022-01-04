@@ -36,6 +36,9 @@ class Login extends Component
             return;
         }
 
+        Auth::logoutOtherDevices($this->password);
+
+
         return redirect()->intended(route('home'));
     }
 
