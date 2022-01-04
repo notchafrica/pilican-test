@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Models\Company;
+use App\Notifications\AccountCreatedNotification;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
@@ -41,7 +42,11 @@ class Profile extends Component
         $user->company_id = $profile->id;
         $user->save();
 
+
         $this->emit('profileCreated');
+        $user->notify(new AccountCreatedNotification());
+
+
 
         return redirect()->route('home');
     }

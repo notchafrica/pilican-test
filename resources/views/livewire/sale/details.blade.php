@@ -52,7 +52,7 @@
                             @endforeach
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap" colspan="2">
-                                    <div class="text-sm text-green-900 font-bold">@lang("Total")</div>
+                                    <div class="text-sm text-blue-900 font-bold">@lang("Total")</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-bold">
                                     {{$order->amount}}

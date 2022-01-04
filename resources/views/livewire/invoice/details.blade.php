@@ -52,7 +52,7 @@
                             @endforeach
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap" colspan="2">
-                                    <div class="text-sm text-green-900 font-bold">@lang("Total")</div>
+                                    <div class="text-sm text-blue-900 font-bold">@lang("Total")</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-bold">
                                     {{$order->amount}}
@@ -104,7 +104,7 @@
 
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap" colspan="2">
-                                    <div class="text-sm text-green-900 font-bold">@lang("Totals HT")</div>
+                                    <div class="text-sm text-blue-900 font-bold">@lang("Totals HT")</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-bold" wire:poll.500ms>
                                     {{ceil($amount - ((int) $quantity_amount??0) - ((int) $trade_amount??0) + ((int)
@@ -115,7 +115,7 @@
                             @if ($tax)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap" colspan="2">
-                                    <div class="text-sm text-green-900 font-bold">@lang("Totals TTC")</div>
+                                    <div class="text-sm text-blue-900 font-bold">@lang("Totals TTC")</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-bold" wire:poll.500ms>
                                     {{ ceil(($amount - ((int) $quantity_amount??0) - ((int) $trade_amount??0) + ((int)

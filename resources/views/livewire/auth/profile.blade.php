@@ -1,9 +1,13 @@
 <div class="flex">
-    <div class="w-full md:w-80 flex-none px-6 h-auto md:min-h-screen bg-green-900 text-gray-100">
+    <div class="w-full md:w-80 flex-none px-6 h-auto md:min-h-screen bg-blue-900 text-gray-100">
         <div class="h-full flex items-center">
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque mollitia harum, quas sapiente pariatur
-                neque, officia hic repellat at optio amet, cum molestias illo labore nulla repellendus nostrum nam
-                beatae.</div>
+            <div class="space-y-2 text-center">
+                <h1 class='text-center text-3xl font-bold'>{{config('app.name')}}</h1>
+                <h3 class="text-xl">@lang("Your management assistant")</h3>
+                <p>@lang("Labsdel is a management software to follow your sales, your stock, your services, your
+                    customers
+                    and your partners.")</p>
+            </div>
         </div>
     </div>
     <div class="flex-grow flex items-center overflow-y-auto">
@@ -15,16 +19,16 @@
                 <x-input label="{{__('Email')}}" name='email' wire:model.lazy="email" type="email"></x-input>
             </div>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <x-native-select label="{{__('Country')}}" wire:model="country">
+                <x-select label="{{__('Country')}}" placeholder="{{__('Country')}}" wire:model="country">
                     @foreach ($countries as $key => $country)
-                    <option value="{{$key}}">{{$country}}</option>
+                    <x-select.option label="{{$country}}" value="{{$key}}">{{$country}}</x-select.option>
                     @endforeach
-                </x-native-select>
+                </x-select>
                 <x-input label="{{__('City')}}" name='city' wire:model.lazy="city"></x-input>
             </div>
             <x-input label="{{__('Address')}}" name='address' wire:model.lazy="address"></x-input>
             <div class="flex space-x-3 justify-end">
-                <x-button type="submit" primary>@lang("Complete")</x-button>
+                <x-button type="submit" primary class="bg-blue-900">@lang("Complete")</x-button>
             </div>
         </form>
     </div>

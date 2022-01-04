@@ -63,7 +63,7 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
 
 
 
@@ -74,12 +74,12 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', LogoutController::class)
         ->name('logout');
 
-    Route::middleware([HasSetupProfile::class])->group(function () {
+    Route::middleware([HasSetupProfile::class, 'verified'])->group(function () {
         Route::get("auth/profile", Profile::class)->name("auth.profile");
     });
 
 
-    Route::middleware([CompanySetupMiddleware::class])->group(function () {
+    Route::middleware([CompanySetupMiddleware::class, 'verified'])->group(function () {
         Route::get('/', Dashboard::class)->name('home');
         Route::get('/profile', LivewireProfile::class)->name('profile');
 
