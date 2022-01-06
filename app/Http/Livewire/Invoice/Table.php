@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Invoice;
 
-use Livewire\Component;
+use App\Models\Order;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filter;
@@ -89,6 +89,59 @@ class Table extends DataTableComponent
     }
 
     public function openModal($sale)
+    {
+        $this->emit("openModal", "invoice.details", ['order' => $sale]);
+    }
+
+    public function downloadBill($sale)
+    {
+        $order = Order::find($sale);
+
+        $products = [];
+
+
+
+
+
+        /* I => Display on browser, D => Force Download, F => local path save, S => return document as string */
+
+        /*  foreach ($order->products as $product) {
+            $products[] = (new InvoiceItem())
+                ->title($product->product->name)
+                //->description('Your product or service description')
+                ->pricePerUnit($product->product->price)
+                ->quantity($product->quantity)
+                ->discount(10);
+        }
+
+        if ($order->customer) {
+            $customer = new Buyer([
+                'name'          => $order->customer->name,
+                'custom_fields' => [
+                    'email' => $order->customer->email,
+                    'phone' => $order->customer->phone,
+                ],
+            ]);
+        } else {
+            $customer = new Buyer([
+                'name'          => __('Undeclared'),
+            ]);
+        }
+
+        $invoice = Invoice::make()
+            ->buyer($customer)
+            ->taxRate(15)
+            ->shipping(1.99)
+            ->addItems($products);
+
+        return $invoice->stream(); */
+
+        $pdf = \PDF2::loadView('invoices.bill', []);
+        $pdf->stream();
+    }
+
+
+    public function downloadReceipt($sale)
     {
         $this->emit("openModal", "invoice.details", ['order' => $sale]);
     }

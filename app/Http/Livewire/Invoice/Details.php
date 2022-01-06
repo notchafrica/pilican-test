@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Invoice;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use LivewireUI\Modal\ModalComponent;
 use WireUi\Traits\Actions;
 
@@ -159,5 +161,49 @@ class Details extends ModalComponent
         } else {
             $customer = $this->customer_id;
         }
+
+        DB::beginTransaction();
+
+        //get total to pay
+
+
+        if ($this->tax) {
+            $total = ceil(($this->amount - ((int) $this->quantity_amount ?? 0) - ((int) $this->trade_amount ?? 0) + ((int)
+            $this->shipping_amount ?? 0)) + (($this->amount - ((int) $this->quantity_amount ?? 0) - ((int)
+            $this->trade_amount ?? 0) + ((int)
+            $this->shipping_amount ?? 0)) / 100 * 19.25));
+        } else {
+            $total = ceil($this->amount - ((int) $this->quantity_amount ?? 0) - ((int) $this->trade_amount ?? 0) + ((int)
+            $this->shipping_amount ?? 0));
+        }
+
+        if ($this->method == 'credit') {
+            if (!$customer) {
+                DB::rollback();
+                return throw ValidationException::withMessages([
+                    'method' => __("A customer must be selected")
+                ]);
+            }
+
+            $customer->balance -= $total;
+            $customer->save();
+        }
+
+        $this->order->status = "complete";
+        $this->order->method = $this->method;
+
+        $this->order->save();
+
+        $this->order->bill()->create([
+            'quantity_reduction' => $this->quantity_amount,
+            'trade_reduction' => $this->trade_amount,
+            'shipping' => $this->shipping_amount,
+            'tax' => $this->tax,
+            'total' => $total
+        ]);
+
+        DB::commit();
+
+        $this->closeModal();
     }
 }

@@ -3,7 +3,8 @@
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg space-y-3">
+                    <x-errors />
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -149,8 +150,9 @@
                                 <label>@lang("Payment method")</label>
                                 <div class="flex space-x-2 mt-2">
                                     <x-radio id="cash" value="cash" label="{{__('Cash')}}" wire:model="method" />
+                                    {{--
                                     <x-radio id="digital" value="digital" label="{{__('Digital payment')}}"
-                                        wire:model="method" />
+                                        wire:model="method" /> --}}
                                     <x-radio id="account" value="account" label="{{__('Account credit')}}"
                                         wire:model="method" />
                                 </div>
@@ -200,6 +202,14 @@
     </div>
     <div class="flex justify-end space-x-4 mt-2 border-top">
         <x-button label="{{__('Cancel')}}" wire:click="closeModal"></x-button>
-        <x-button type="submit" primary label="{{__('Save')}}" wire:click.prevent="bill()">@lang("Save")</x-button>
+        @if($order->status == 'pending')
+        <x-button type="submit" primary label="{{__('Charge')}}" wire:click.prevent="bill()">@lang("Charge")</x-button>
+        @else
+        <x-button type="submit" primary label="{{__('Download bill')}}" wire:click.prevent="download()">@lang("Download
+            bill")</x-button>
+        <x-button type="submit" primary label="{{__('Download receipt')}}" wire:click.prevent="receipt()">
+            @lang("Download receipt")
+        </x-button>
+        @endif
     </div>
 </x-card>

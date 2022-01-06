@@ -112,7 +112,8 @@
                                 @method("post")
                                 @csrf
 
-                                <x-dropdown.item separator icon="logout" type="submit" label="Logout" />
+                                <x-dropdown.item separator icon="logout" type="submit" :href="route('logout')"
+                                    :label="__('Logout')" />
                             </form>
                         </x-dropdown>
                     </div>

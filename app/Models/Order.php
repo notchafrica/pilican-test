@@ -36,4 +36,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderService::class);
     }
+
+    public function bill()
+    {
+        return $this->hasOne(Billing::class);
+    }
 }

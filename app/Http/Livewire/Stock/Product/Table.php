@@ -29,7 +29,7 @@ class Table extends DataTableComponent
             }),
             Column::make('Reference', 'code'),
             Column::make('Stock', 'quantity')->format(function ($products, $key, $product) {
-                return $product->purchases()->sum('quantity') - $product->sales()->whereStatus('complete')->sum('quantity');
+                return $product->purchases()->sum('quantity') - $product->sales()->sum('quantity');
             }),
             Column::make('Category', 'category.name'),
             Column::make('Added at', 'created_at'),

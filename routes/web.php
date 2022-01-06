@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Profile;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\Cashout\Index as CashoutIndex;
 use App\Http\Livewire\Customer\Browse as CustomerBrowse;
 use App\Http\Livewire\Customer\Details as CustomerDetails;
 use App\Http\Livewire\Dashboard;
@@ -71,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('signed')
         ->name('verification.verify');
 
-    Route::post('logout', LogoutController::class)
+    Route::any('logout', LogoutController::class)
         ->name('logout');
 
     Route::middleware([HasSetupProfile::class, 'verified'])->group(function () {
@@ -99,6 +100,7 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::group(['middleware' => ['role:super-admin|admin|invoice']], function () {
             Route::get('invoices', InvoiceIndex::class)->name("invoices.index");
+            Route::get('invoices/cashout', CashoutIndex::class)->name("invoices.cashout");
         });
 
         Route::group(['middleware' => ['role:super-admin|admin']], function () {

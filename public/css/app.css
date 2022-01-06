@@ -1056,6 +1056,9 @@ input:invalid, textarea:invalid, select:invalid {
 .table {
 	display: table;
 }
+.table-header-group {
+	display: table-header-group;
+}
 .grid {
 	display: grid;
 }
@@ -1217,6 +1220,9 @@ input:invalid, textarea:invalid, select:invalid {
 }
 .flex-grow {
 	flex-grow: 1;
+}
+.border-collapse {
+	border-collapse: collapse;
 }
 .origin-top-right {
 	transform-origin: top right;
@@ -1875,6 +1881,10 @@ input:invalid, textarea:invalid, select:invalid {
 	padding-top: 1.25rem;
 	padding-bottom: 1.25rem;
 }
+.px-0 {
+	padding-left: 0px;
+	padding-right: 0px;
+}
 .pb-24 {
 	padding-bottom: 6rem;
 }
@@ -1950,11 +1960,17 @@ input:invalid, textarea:invalid, select:invalid {
 .pr-10 {
 	padding-right: 2.5rem;
 }
+.pr-0 {
+	padding-right: 0px;
+}
 .text-left {
 	text-align: left;
 }
 .text-center {
 	text-align: center;
+}
+.text-right {
+	text-align: right;
 }
 .align-middle {
 	vertical-align: middle;
@@ -1970,6 +1986,10 @@ input:invalid, textarea:invalid, select:invalid {
 	font-size: 1.875rem;
 	line-height: 2.25rem;
 }
+.text-xl {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+}
 .text-lg {
 	font-size: 1.125rem;
 	line-height: 1.75rem;
@@ -1977,10 +1997,6 @@ input:invalid, textarea:invalid, select:invalid {
 .text-xs {
 	font-size: 0.75rem;
 	line-height: 1rem;
-}
-.text-xl {
-	font-size: 1.25rem;
-	line-height: 1.75rem;
 }
 .text-2xl {
 	font-size: 1.5rem;
