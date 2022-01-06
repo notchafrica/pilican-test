@@ -36,6 +36,7 @@ class Create extends ModalComponent
             'email' => $this->email,
             'phone' => $this->phone,
             'password' => bcrypt($this->password),
+            'email_verified_at' => now()
         ]);
 
         foreach ($this->roles as $role) {
