@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\License;
 
+use App\Models\CompanyLicense;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -31,6 +33,25 @@ class Validate extends Component
             $this->error = "error";
         }
 
-        dd($response->body());
+        $r = json_decode($response->body(), true);
+
+        if (!$r['company'] || !$r['company']['code'] == auth()->user()->company->code) {
+            $license = CompanyLicense::create([
+                'key' => $r['key'],
+                'status' => $r['status'],
+                'name' => $r['license_type']['name'],
+                'expired_at' => $r['expired_at'],
+                'notification' => $r['license_type']['notification'],
+                'cloud' => $r['license_type']['cloud'],
+                'desk' => $r['license_type']['desk'],
+                'company_id' => auth()->user()->company->id
+            ]);
+
+            return redirect()->route('home');
+
+            // store registration on remote
+        } else {
+            $this->error = "error";
+        }
     }
 }

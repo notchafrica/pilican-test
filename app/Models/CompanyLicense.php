@@ -10,4 +10,11 @@ class CompanyLicense extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $guarded = ['id'];
+
+    public function scopeIsActive()
+    {
+        return !$this->expired_at || $this->expired_at > now();
+    }
 }

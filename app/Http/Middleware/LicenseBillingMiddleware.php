@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class LicenseMiddleware
+class LicenseBillingMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,10 @@ class LicenseMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $license =  auth()->user()->company->license;
-        if (!$license) {
-            return redirect()->route('license.validate');
-        }
 
-        if (!$license->isActive()) {
-            return redirect()->route('license.notice');
+        $license =  auth()->user()->company->license;
+        if ($license->status != 'payed') {
+            return redirect()->route('license.billing');
         }
         return $next($request);
     }

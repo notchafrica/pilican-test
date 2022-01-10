@@ -16,6 +16,7 @@ class CreateCampanyLicensesTable extends Migration
         Schema::create('company_licenses', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
+            $table->string('name')->nullable();
             $table->foreignId('company_id')->constrained();
             $table->integer('desk')->default(2);
             $table->boolean('cloud')->default(false);
