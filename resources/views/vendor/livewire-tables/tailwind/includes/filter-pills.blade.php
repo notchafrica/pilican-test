@@ -6,7 +6,7 @@
         @foreach($filters as $key => $value)
         @if ($key !== 'search' && filled($value))
         <span wire:key="filter-pill-{{ $key }}"
-            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-blue-100 text-blue-800 capitalize dark:bg-blue-200 dark:text-blue-900">
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 capitalize dark:bg-indigo-200 dark:text-indigo-900">
             {{ $filterNames[$key] ?? collect($this->columns())->pluck('text', 'column')->get($key,
             isset($customFilters[$key]) && property_exists($customFilters[$key], 'name') ? $customFilters[$key]->name :
             ucwords(strtr($key, ['_' => ' ', '-' => ' ']))) }}:
@@ -25,7 +25,7 @@
             @endif
 
             <button wire:click="removeFilter('{{ $key }}')" type="button"
-                class="flex-shrink-0 ml-0.5 h-4 w-4 rounded-full inline-flex items-center justify-center text-blue-400 hover:bg-blue-200 hover:text-blue-500 focus:outline-none focus:bg-blue-500 focus:text-white">
+                class="flex-shrink-0 ml-0.5 h-4 w-4 rounded-full inline-flex items-center justify-center text-indigo-400 hover:bg-indigo-200 hover:text-indigo-500 focus:outline-none focus:bg-indigo-500 focus:text-white">
                 <span class="sr-only">@lang('Remove filter option')</span>
                 <svg class="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
                     <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />

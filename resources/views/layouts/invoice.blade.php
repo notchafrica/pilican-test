@@ -5,13 +5,13 @@
                 <h2 class="px-3 font-semibold">@lang("Invoices")</h2>
             </li>
             <li><a href="{{route('invoices.index')}}"
-                    class="flex px-3 py-2 transition-all delay-100 items-center space-x-2 ease-in-out hover:bg-blue-100
-                    w-full text-blue-600 rounded-md @if (Route::currentRouteName() == 'invoices.index') bg-blue-100 @endif">
+                    class="flex px-3 py-2 transition-all delay-100 items-center space-x-2 ease-in-out hover:bg-indigo-100
+                    w-full text-indigo-600 rounded-md @if (Route::currentRouteName() == 'invoices.index') bg-indigo-100 @endif">
                     <x-icon name="archive" class="h-5"></x-icon> <span>@lang("Invoices")</span>
                 </a></li>
             <li><a href="{{route('invoices.cashout')}}"
-                    class="flex px-3 py-2 transition-all delay-100 items-center space-x-2 ease-in-out hover:bg-blue-100
-                                    w-full text-blue-600 rounded-md @if (Route::currentRouteName() == 'invoices.cashout') bg-blue-100 @endif">
+                    class="flex px-3 py-2 transition-all delay-100 items-center space-x-2 ease-in-out hover:bg-indigo-100
+                                    w-full text-indigo-600 rounded-md @if (Route::currentRouteName() == 'invoices.cashout') bg-indigo-100 @endif">
                     <x-icon name="arrow-down" class="h-5"></x-icon> <span>@lang("Cash out")</span>
                 </a></li>
         </ul>

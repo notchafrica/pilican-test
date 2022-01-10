@@ -117,7 +117,7 @@
                     </div>
                     <!--end::Password-->
                     <!--begin::Notice-->
-                    {{-- <div class="notice flex bg-light-primary rounded border-blue-600 border border-dashed p-6">
+                    {{-- <div class="notice flex bg-light-primary rounded border-indigo-600 border border-dashed p-6">
                         <!--begin::Icon-->
                         <!--begin::Svg Icon | path: icons/duotune/general/gen048.svg-->
                         <span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
@@ -146,7 +146,7 @@
                             <!--end::Content-->
                             <!--begin::Action-->
                             <a href="#"
-                                class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 px-6 self-center whitespace-nowrap"
+                                class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-indigo-600 text-white hover:bg-indigo-600 px-6 self-center whitespace-nowrap"
                                 data-bs-toggle="modal" data-bs-target="#kt_modal_two_factor_authentication">Enable</a>
                             <!--end::Action-->
                         </div>

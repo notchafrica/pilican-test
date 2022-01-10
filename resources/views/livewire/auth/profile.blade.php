@@ -1,5 +1,5 @@
 <div class="flex">
-    <div class="w-full md:w-80 flex-none px-6 h-auto md:min-h-screen bg-blue-900 text-gray-100">
+    <div class="w-full md:w-80 flex-none px-6 h-auto md:min-h-screen bg-indigo-900 text-gray-100">
         <div class="h-full flex items-center">
             <div class="space-y-2 text-center">
                 <h1 class='text-center text-3xl font-bold'>{{config('app.name')}}</h1>
@@ -28,7 +28,7 @@
             </div>
             <x-input label="{{__('Address')}}" name='address' wire:model.lazy="address"></x-input>
             <div class="flex space-x-3 justify-end">
-                <x-button type="submit" primary class="bg-blue-900">@lang("Complete")</x-button>
+                <x-button type="submit" primary class="bg-indigo-900">@lang("Complete")</x-button>
             </div>
         </form>
     </div>

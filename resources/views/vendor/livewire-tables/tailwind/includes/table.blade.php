@@ -10,7 +10,7 @@
         <x-livewire-tables::table.heading>
             <div class="inline-flex rounded-md shadow-sm">
                 <input wire:model="selectPage" type="checkbox"
-                    class="rounded border-gray-300 text-blue-600 shadow-sm transition duration-150 ease-in-out focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:bg-gray-600" />
+                    class="rounded border-gray-300 text-indigo-600 shadow-sm transition duration-150 ease-in-out focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:bg-gray-600" />
             </div>
         </x-livewire-tables::table.heading>
         @endif
@@ -105,7 +105,7 @@
                     <input wire:model="selected" wire:loading.attr.delay="disabled"
                         value="{{ $row->{$this->parseField($primaryKey)} }}"
                         onclick="event.stopPropagation();return true;" type="checkbox"
-                        class="rounded border-gray-300 text-blue-600 shadow-sm transition duration-150 ease-in-out focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:bg-gray-600" />
+                        class="rounded border-gray-300 text-indigo-600 shadow-sm transition duration-150 ease-in-out focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:bg-gray-600" />
                 </div>
             </x-livewire-tables::table.cell>
             @endif

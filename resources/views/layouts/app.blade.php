@@ -4,11 +4,11 @@
 
 <main class="bg-gray-100 h-screen overflow-hidden relative">
     <div class="flex items-start justify-between">
-        <div class="h-screen hidden lg:flex lg:flex-col shadow-lg relative w-32 bg-blue-800">
+        <div class="h-screen hidden lg:flex lg:flex-col shadow-lg relative w-32 bg-indigo-800">
             <div class="h-full dark:bg-gray-700">
                 <nav>
                     <div class="space-y-0">
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'home') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'home') bg-indigo-900 text-white @else @endif"
                             href="{{route('home')}}">
                             <span class="text-left">
                                 <svg class="h-12" fill="currentColor" viewBox="0 0 1792 1792"
@@ -23,7 +23,7 @@
                             </span>
                         </a>
                         @role("admin|sale|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'sales.index') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'sales.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('sales.index')}}">
                             <span class="text-left">
                                 <x-icon name="currency-bangladeshi" class="h-12"></x-icon>
@@ -34,7 +34,7 @@
                         </a>
                         @endrole
                         @role("admin|invoice|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'invoices.index') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'invoices.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('invoices.index')}}">
                             <span class="text-left">
                                 <x-icon name="cash" class="h-12"></x-icon>
@@ -45,7 +45,7 @@
                         </a>
                         @endrole
                         @role("warehouse|admin|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'stocks.index') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'stocks.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('stocks.index')}}">
                             <span class="text-left">
                                 <x-icon name="view-grid" class="h-12"></x-icon>
@@ -56,7 +56,7 @@
                         </a>
                         @endrole
                         @role("admin|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'customers.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('customers.index')}}">
                             <span class="text-left">
                                 <x-icon name="user-group" class="h-12"></x-icon>
@@ -67,7 +67,7 @@
                         </a>
                         @endrole
                         @role("admin|super-admin")
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'providers.index') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'providers.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('providers.index')}}">
                             <span class="text-left">
                                 <x-icon name="truck" class="h-12"></x-icon>
@@ -78,7 +78,7 @@
                         </a>
                         @endrole
                         @role('admin|super-admin')
-                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-blue-900 p-2 @if(Route::currentRouteName() == 'team.index') bg-blue-900 text-white @else @endif"
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'team.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('team.index')}}">
                             <span class="text-left">
                                 <x-icon name="users" class="h-12"></x-icon>
