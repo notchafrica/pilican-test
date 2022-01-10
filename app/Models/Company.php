@@ -77,4 +77,10 @@ class Company extends Model
     {
         return $this->hasMany(Cashout::class);
     }
+
+
+    public function license()
+    {
+        return $this->hasOne(CompanyLicense::class);
+    }
 }

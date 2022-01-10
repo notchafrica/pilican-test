@@ -14,6 +14,7 @@ use App\Http\Livewire\Customer\Browse as CustomerBrowse;
 use App\Http\Livewire\Customer\Details as CustomerDetails;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Invoice\Index as InvoiceIndex;
+use App\Http\Livewire\License\Validate;
 use App\Http\Livewire\Profile as LivewireProfile;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
@@ -27,6 +28,7 @@ use App\Http\Livewire\Stock\Purchase\Purchase;
 use App\Http\Livewire\Stock\Service\Browse as ServiceBrowse;
 use App\Http\Middleware\CompanySetupMiddleware;
 use App\Http\Middleware\HasSetupProfile;
+use App\Http\Middleware\LicenseMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,8 +81,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get("auth/profile", Profile::class)->name("auth.profile");
     });
 
+    Route::get('/license/validate', Validate::class)->name('license.validate');
 
-    Route::middleware([CompanySetupMiddleware::class, 'verified', 'checksinglesession'])->group(function () {
+
+    Route::middleware([CompanySetupMiddleware::class, 'verified', 'checksinglesession', LicenseMiddleware::class])->group(function () {
         Route::get('/', Dashboard::class)->name('home');
         Route::get('/profile', LivewireProfile::class)->name('profile');
 
