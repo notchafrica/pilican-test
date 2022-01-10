@@ -11,7 +11,7 @@ module.exports = {
                 "w-70": "17rem",
             },
             colors: {
-                primary: colors.blue,
+                primary: colors.indigo,
             },
         },
     },

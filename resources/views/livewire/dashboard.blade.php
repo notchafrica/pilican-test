@@ -3,7 +3,7 @@
         @role("admin|sale|super-admin|invoice")
         <div class="shadow rounded-lg w-full p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="bg-blue-500 p-2 h-4 w-4 rounded-full relative">
+                <span class="bg-indigo-500 p-2 h-4 w-4 rounded-full relative">
                     <svg width="20" fill="currentColor" height="20"
                         class="text-white h-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                         viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +21,7 @@
                     {{ $company->orders()->whereStatus('complete')->sum('amount')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
-                    <div class="absolute top-0 h-2  left-0 rounded bg-blue-500 w-2/3">
+                    <div class="absolute top-0 h-2  left-0 rounded bg-indigo-500 w-2/3">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
         @role("admin|invoice|super-admin")
         <div class="shadow rounded-lg w-full p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="bg-blue-500 p-2 h-4 w-4 rounded-full relative">
+                <span class="bg-indigo-500 p-2 h-4 w-4 rounded-full relative">
                     <svg width="20" fill="currentColor" height="20"
                         class="text-white h-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                         viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@
                     $company->cashouts()->whereStatus('complete')->sum('amount')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
-                    <div class="absolute top-0 h-2  left-0 rounded bg-blue-500 w-2/3">
+                    <div class="absolute top-0 h-2  left-0 rounded bg-indigo-500 w-2/3">
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         @role("admin|invoice|super-admin")
         <div class="shadow rounded-lg w-full p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="bg-blue-500 p-2 h-4 w-4 rounded-full relative">
+                <span class="bg-indigo-500 p-2 h-4 w-4 rounded-full relative">
                     <svg width="20" fill="currentColor" height="20"
                         class="text-white h-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                         viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,7 @@
                     $company->cashouts()->whereStatus('complete')->sum('amount')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
-                    <div class="absolute top-0 h-2  left-0 rounded bg-blue-500 w-2/3">
+                    <div class="absolute top-0 h-2  left-0 rounded bg-indigo-500 w-2/3">
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     {{$company->customers()->sum('balance')}} FCFA
                 </p>
                 <div class="relative w-28 h-2 bg-gray-200 rounded">
-                    <div class="absolute top-0 h-2  left-0 rounded bg-blue-500 w-0">
+                    <div class="absolute top-0 h-2  left-0 rounded bg-indigo-500 w-0">
                     </div>
                 </div>
             </div>

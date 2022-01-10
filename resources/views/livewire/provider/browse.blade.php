@@ -33,7 +33,7 @@
                         </div>
                         <div class="text-gray-600 dark:text-gray-200 text-sm flex space-x-4">
                             <span
-                                class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-blue-600 bg-blue-50 rounded-md">@lang("Balance"):
+                                class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-indigo-600 bg-indigo-50 rounded-md">@lang("Balance"):
                                 {{$provider->balance}}</span>
                         </div>
                     </div>
