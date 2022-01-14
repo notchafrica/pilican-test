@@ -38,10 +38,12 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
+        Auth::login($user, true);
+
+        $user->assignRole(Role::findByName('super-admin'));
         event(new Registered($user));
 
-        Auth::login($user, true);
-        $user->assignRole(Role::findByName('super-admin'));
+
 
         return redirect()->intended(route('home'));
     }

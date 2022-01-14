@@ -20,8 +20,14 @@
                 <p>@lang("It is possible that the license attached to your account is not paid, please contact customer
                     service to make the
                     payment.")</p>
-            </div>
 
+
+            </div>
+            <div class="text-center">
+                <a href="{{route('license.validate')}}" class="rounded py-2 px-3 bg-indigo-600 text-white">@lang("Back
+                    to
+                    license")</a>
+            </div>
         </div>
     </div>
 </div>

@@ -46,6 +46,10 @@ class Profile extends Component
         $this->emit('profileCreated');
         $user->notify(new AccountCreatedNotification());
 
+        //send account on server
+
+        //jsdhjkh
+
 
 
         return redirect()->route('home');
