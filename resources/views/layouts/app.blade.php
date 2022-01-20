@@ -22,6 +22,17 @@
                                 @lang("Dashboard")
                             </span>
                         </a>
+                        @role("admin|super-admin")
+                        <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'sales.index') bg-indigo-900 text-white @else @endif"
+                            href="{{route('reporting.browse')}}">
+                            <span class="text-left">
+                                <x-icon name="chart-square-bar" class="h-12"></x-icon>
+                            </span>
+                            <span class="mx-2 text-sm font-normal">
+                                @lang("Reporting")
+                            </span>
+                        </a>
+                        @endrole
                         @role("admin|sale|super-admin")
                         <a class="w-full text-gray-100 dark:text-white flex flex-col items-center transition-colors duration-200 justify-start hover:bg-indigo-900 p-2 @if(Route::currentRouteName() == 'sales.index') bg-indigo-900 text-white @else @endif"
                             href="{{route('sales.index')}}">

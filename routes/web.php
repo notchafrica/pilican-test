@@ -20,6 +20,7 @@ use App\Http\Livewire\License\Validate;
 use App\Http\Livewire\Profile as LivewireProfile;
 use App\Http\Livewire\Provider\Browse;
 use App\Http\Livewire\Provider\Details;
+use App\Http\Livewire\Reporting\Browse as ReportingBrowse;
 use App\Http\Livewire\Sale\Index as SaleIndex;
 use App\Http\Livewire\Staff\Role\Browse as RoleBrowse;
 use App\Http\Livewire\Staff\User\Browse as UserBrowse;
@@ -103,10 +104,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('stocks/purchases', Purchase::class)->name("stocks.purchases");
         });
 
+
+
         Route::group(['middleware' => ['role:super-admin|admin']], function () {
             Route::get('stocks/categories', CategoryBrowse::class)->name("stocks.categories");
             Route::get('stocks/products', ProductBrowse::class)->name("stocks.products");
             Route::get('stocks/services', ServiceBrowse::class)->name("stocks.services");
+            Route::get('reporting', ReportingBrowse::class)->name("reporting.browse");
         });
 
         Route::group(['middleware' => ['role:super-admin|admin|sale']], function () {

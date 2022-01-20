@@ -19,14 +19,9 @@ class Table extends DataTableComponent
             Column::make('Name')
                 ->sortable()
                 ->searchable(),
-            Column::make('Price', 'price')->format(function ($products, $key, $product) {
-
-                /* return ($product->purchases()->count() > 0 ? $product->purchases()->avg('price') :
-                    $product->price)
-                    . ' FCFA'; */
-
+            /* Column::make('Price', 'price')->format(function ($products, $key, $product) {
                 return $product->price . ' FCFA';
-            }),
+            }), */
             Column::make('Reference', 'code'),
             Column::make('Stock', 'quantity')->format(function ($products, $key, $product) {
                 return $product->purchases()->sum('quantity') - $product->sales()->sum('quantity');
@@ -38,7 +33,6 @@ class Table extends DataTableComponent
 
     public function query()
     {
-        return $this->company->products()
-            ->orderBy('name');
+        return $this->company->products();
     }
 }

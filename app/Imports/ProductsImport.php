@@ -22,8 +22,8 @@ class ProductsImport implements ToModel, SkipsEmptyRows, WithHeadingRow, WithVal
         $company = auth()->user()->company;
         return new Product([
             'name'     => $row['designation'],
-            'quantity'    => isset($row['quantity']) ? $row['quantity'] : $row['qte'],
-            'price'    => $row['pa'],
+            'quantity'    => $row['qte'],
+            'price'    => $row['prix'],
             'company_id'    => $company->id,
             'user_id'    => auth()->id(),
         ]);
@@ -32,13 +32,18 @@ class ProductsImport implements ToModel, SkipsEmptyRows, WithHeadingRow, WithVal
     public function rules(): array
     {
         return [
-            /* 'designation' => [
+            'designation' => [
                 'required',
                 'string',
             ],
             'qte' => [
                 'required',
                 'numeric',
-            ], */];
+            ],
+            'prix' => [
+                'nullable',
+                'numeric',
+            ],
+        ];
     }
 }
