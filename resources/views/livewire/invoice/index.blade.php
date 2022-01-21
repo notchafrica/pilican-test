@@ -5,6 +5,9 @@
                 <h1 class="text-2xl font-semibold">@lang("Invoices")</h1>
                 <p>@lang("Invoices overview")</p>
             </div>
+            <div>
+                <x-button wire:click="close">@lang("Closing the day")</x-button>
+            </div>
         </div>
         <div class="w-full">
             <livewire:invoice.table :company="$company"></livewire:invoice.table>

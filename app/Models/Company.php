@@ -83,4 +83,9 @@ class Company extends Model
     {
         return $this->hasOne(CompanyLicense::class);
     }
+
+    public function reportings()
+    {
+        return $this->hasMany(Reporting::class);
+    }
 }
