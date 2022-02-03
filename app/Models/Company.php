@@ -67,6 +67,10 @@ class Company extends Model
     {
         return $this->hasMany(Order::class);
     }
+    public function invoices()
+    {
+        return $this->hasMany(Order::class)->whereStatus('complete');
+    }
 
     public function purchases()
     {

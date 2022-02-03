@@ -27,9 +27,14 @@ class Table extends  DataTableComponent
         ];
     }
 
+    public function openModal($sale)
+    {
+        $this->emit("openModal", "reporting.details", ['reporting' => $sale]);
+    }
+
     public function query()
     {
-        return $this->company->orders()->when($this->getFilter('status'), fn ($query, $active) => $query->where('status', $active));
+        return $this->company->reportings();
     }
 
     public function filters(): array

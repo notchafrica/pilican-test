@@ -6,7 +6,7 @@
                 <p>@lang("Invoices overview")</p>
             </div>
             <div>
-                <x-button wire:click="close">@lang("Closing the day")</x-button>
+                <x-button wire:click="close" primary>@lang("Closing the day")</x-button>
             </div>
         </div>
         <div class="w-full">
