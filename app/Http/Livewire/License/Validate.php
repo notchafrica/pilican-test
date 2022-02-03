@@ -4,6 +4,7 @@ namespace App\Http\Livewire\License;
 
 use App\Models\CompanyLicense;
 use App\Models\Customer;
+use App\Models\License;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -32,7 +33,17 @@ class Validate extends Component
 
         //get license
 
-        $response = Http::acceptJson()->get('http://' . env('LICENSE_DOMAIN') . '/' . $this->key);
+        $license = License::with(['licenseType', 'company'])->where('key', $this->key)->first();
+
+        dd($license, auth()->user()->company);
+
+        if ($license->company_id == auth()->user()->company->id || !$license->company) {
+            dd($license);
+        } else {
+            $this->error = "You already have a license";
+        }
+
+        /* $response = Http::acceptJson()->get('http://' . env('LICENSE_DOMAIN') . '/' . $this->key);
 
         if ($response->successful()) {
             $this->error = "error";
@@ -46,7 +57,6 @@ class Validate extends Component
 
             $response = Http::post('http://' . env('LICENSE_DOMAIN') . '/' . $this->key . '/' . $company->code);
 
-            dd($response->body());
             if ($response->successful()) {
 
                 $license = $company->license;
@@ -85,6 +95,6 @@ class Validate extends Component
             // store registration on remote
         } else {
             $this->error = "error";
-        }
+        } */
     }
 }
