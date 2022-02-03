@@ -45,6 +45,8 @@ class Validate extends Component
         if (!isset($r['company']) || !(isset($r['company']) && isset($r['company']['code']) && $r['company']['code'] != $company->code)) {
 
             $response = Http::post('http://' . env('LICENSE_DOMAIN') . '/' . $this->key . '/' . $company->code);
+
+            dd($response->body());
             if ($response->successful()) {
 
                 $license = $company->license;
