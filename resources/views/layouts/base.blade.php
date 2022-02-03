@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
     @livewireStyles
-    @wireUiScripts
+    <wireui:scripts />
 
     <!-- Scripts -->
     <script src="{{ url(mix('js/app.js')) }}" defer></script>

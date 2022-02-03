@@ -12,7 +12,7 @@ class Profile extends Component
     public $name;
     public $email;
     public $phone;
-    public $country;
+    public $country = "CM";
     public $city;
     public $address;
     public $about;
