@@ -39,7 +39,6 @@ class Validate extends Component
             $this->error = "Invalid license key";
         } else {
             if (!$license->company || $license->company->company_id == auth()->user()->company->id) {
-                dd($license);
                 if ($license->company) {
                     $license->company()->update([
                         'company_id' => auth()->user()->company->id,
