@@ -13,7 +13,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            @if ($error == 'error')
+            @if ($error)
             <div class="flex items-center px-4 py-3 mb-6 text-sm text-white bg-red-500 rounded shadow" role="alert">
                 <svg class="w-4 h-4 mr-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -31,7 +31,7 @@
                 <p>@lang("Before proceeding, please enter your license key.")</p>
 
                 <div>
-                    <x-inputs.maskable mask="XXXX XXXXX XXXXX XXXX" wire:model.defer="key"
+                    <x-inputs.maskable mask="XXXX XXXXX XXXXX XXXX" wire:model.lazy="key"
                         :placeholder="__('License key')" />
                 </div>
                 <div>

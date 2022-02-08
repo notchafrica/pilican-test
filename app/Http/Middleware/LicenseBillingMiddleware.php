@@ -17,7 +17,7 @@ class LicenseBillingMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-        $license =  auth()->user()->company->license;
+        $license =  auth()->user()->company->license->license;
         if ($license->status != 'payed') {
             return redirect()->route('license.billing');
         }

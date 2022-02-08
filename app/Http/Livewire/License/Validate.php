@@ -35,13 +35,28 @@ class Validate extends Component
 
         $license = License::with(['licenseType', 'company'])->where('key', $this->key)->first();
 
-        dd($license, auth()->user()->company);
-
-        if ($license->company_id == auth()->user()->company->id || !$license->company) {
-            dd($license);
+        if (!$license) {
+            $this->error = "Invalid license key";
         } else {
-            $this->error = "You already have a license";
+            if (!$license->company || $license->company->company_id == auth()->user()->company->id) {
+                dd($license);
+                if ($license->company) {
+                    $license->company()->update([
+                        'company_id' => auth()->user()->company->id,
+                    ]);
+                } else {
+                    $license->company()->create([
+                        'company_id' => auth()->user()->company->id,
+                    ]);
+                }
+
+                return redirect()->route('home');
+            } else {
+                $this->error = "You already have a license";
+            }
         }
+
+
 
         /* $response = Http::acceptJson()->get('http://' . env('LICENSE_DOMAIN') . '/' . $this->key);
 
