@@ -19,9 +19,9 @@
         </x-input>
         <x-native-select label="Type" :options="[
                         ['name' => __('No Divisible'),  'id' => 'no_div'],
-                        ['name' => __('Divisible in part'),  'id' => 'no_part'],
-                        ['name' => __('Divisible in liter'),  'id' => 'no_liter'],
-                        ['name' => __('Divisible in kilo'),  'id' => 'no_kilo'],
+                        ['name' => __('Divisible in part'),  'id' => 'div_part'],
+                        ['name' => __('Divisible in liter'),  'id' => 'div_liter'],
+                        ['name' => __('Divisible in kilo'),  'id' => 'div_kilo'],
                         //['name' => __('Composed product'),  'id' => 'composed'],
                     ]" option-label="name" option-value="id" wire:model="type" />
     </div>
