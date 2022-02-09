@@ -42,4 +42,9 @@ class Product extends Model
     {
         return $this->hasMany(OrderProduct::class);
     }
+
+    public function unities()
+    {
+        return $this->hasMany(SaleUnity::class);
+    }
 }

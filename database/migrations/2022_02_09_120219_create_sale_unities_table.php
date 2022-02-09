@@ -19,6 +19,8 @@ class CreateSaleUnitiesTable extends Migration
             $table->foreignId('product_id')->constrained();
             $table->string('operation')->default("*");
             $table->double('quantity')->nullable();
+            $table->text('description')->nullable();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

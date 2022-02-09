@@ -139,5 +139,6 @@
         </div>
     </div>
 </main>
-
+<x-event-listener></x-event-listener>
 @endsection
+

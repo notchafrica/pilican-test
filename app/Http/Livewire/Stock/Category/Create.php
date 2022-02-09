@@ -29,6 +29,8 @@ class Create extends ModalComponent
 
         $this->emit('stockUpdated');
         $this->emit('categoryAdded');
+        $this->dispatchBrowserEvent('categoryAdded');
+        $this->dispatchBrowserEvent('stockUpdated');
         $this->closeModal();
     }
 

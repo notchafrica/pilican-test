@@ -8,7 +8,7 @@ use Livewire\Component;
 class Browse extends Component
 {
     public $company;
-    protected $listeners = ['productAdded' => 'render', 'productImported' => 'render'];
+    protected $listeners = ['productUpdated' => 'render', 'productImported' => 'render'];
 
 
     public function export()

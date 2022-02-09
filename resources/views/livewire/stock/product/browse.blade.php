@@ -21,4 +21,5 @@
             <livewire:stock.product.table :company="$company"></livewire:stock.product.table>
         </div>
     </div>
+
 </x-stock-layout>

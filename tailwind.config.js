@@ -7,8 +7,8 @@ module.exports = {
             fontFamily: {
                 sans: ["Inter var", ...defaultTheme.fontFamily.sans],
             },
-            sizing: {
-                "w-70": "17rem",
+            spacing: {
+                70: "17rem",
             },
             colors: {
                 primary: colors.indigo,
@@ -47,6 +47,5 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
-        //require("daisyui"),
     ],
 };

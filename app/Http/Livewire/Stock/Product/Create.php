@@ -46,7 +46,7 @@ class Create extends ModalComponent
             "category_id" => $this->category,
             'expired_at' => $this->expired_at,
             "type" => $this->type ?? 'no_div',
-            "security_stock" => $this->security_stock,
+            "security_stock" => $this->security_stock ?? 1,
             "user_id" => auth()->id()
         ]);
 
@@ -64,6 +64,8 @@ class Create extends ModalComponent
         }
 
         $this->emit('productUpdated');
+        $this->dispatchBrowserEvent('productUpdated');
+
         $this->closeModal();
     }
     public function render()
