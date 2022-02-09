@@ -58,7 +58,8 @@ class Create extends ModalComponent
             $purchase->products()->create([
                 'product_id' => $product->id,
                 'quantity' => $this->quantity,
-                "movement" => "input"
+                "movement" => "input",
+                'expired_at' => $this->expirable ? $this->expired_at : null,
             ]);
         }
 

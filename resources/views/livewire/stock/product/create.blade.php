@@ -6,12 +6,11 @@
         <div class="md:col-span-2">
             <x-input label="{{__('Name')}}" wire:model="name" name="name"></x-input>
         </div>
-        <x-native-select label="{{__('Category')}}" wire:model="category" name="category">
+        <x-select label="{{__('Category')}}" placeholder="{{__('Category')}}" wire:model.lazy="category">
             @foreach ($categories as $jcategory)
-
-            <option value="{{$jcategory->id}}">{{$jcategory->name}}</option>
+            <x-select.option value="{{$jcategory->id}}" label="{{$jcategory->name}}" />
             @endforeach
-        </x-native-select>
+        </x-select>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <x-input label="{{__('Sell price')}}" type="number" wire:model="price" name="price"></x-input>
@@ -35,7 +34,7 @@
     @endif
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <x-toggle :label="__('Expirable')" wire:model='expirable'></x-toggle>
-        @if ($expirable)git c
+        @if ($expirable && $purchase)
         <x-datetime-picker without-timezone without-time without-tips label="{{__('Expiration date')}}"
             placeholder="{{__('Expiration date')}}" wire:model="expired_at" />
         @endif

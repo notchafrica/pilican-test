@@ -19,6 +19,7 @@ class CreatePurcharseProductsTable extends Migration
             $table->foreignId('product_id')->constrained();
             $table->double('quantity')->default(1);
             $table->double('price')->default(0);
+            $table->date('expired_at')->nullable();
             $table->timestamps();
         });
     }
